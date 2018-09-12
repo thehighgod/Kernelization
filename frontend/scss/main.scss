@@ -1,0 +1,32 @@
+// main.scss - The main stylesheet.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+// "Bow, peasant."
+//
+
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+@import "landing";
+@import "mixins/breakpoints";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lato;
+}
+
+html, body {
+    position: relative;
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+.App {
+    //background-color: $black1;
+    height: 100%;
+    color: #000000;
+    text-align: center;
+}

@@ -1,0 +1,109 @@
+// landing.scss - The styling for the landing view.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+// "Bow, peasant."
+//
+
+@import "palette";
+@import "components/navbar";
+@import "components/greeting";
+@import "components/footer";
+@import "mixins/breakpoints";
+
+.k__header {
+    background-color: $black1;
+    display: block;
+    width: 100%;
+    padding: 20px;
+
+    nav {
+        @include Navbar($white1);
+        display: flex;
+        width: inherit;
+        align-items: center;
+        justify-content: space-between;
+
+        .k__header-navbar-branding {
+            color: $blue3;
+            font-size: 2em;
+        }
+
+        .k__header-navbar-main {
+
+            li {
+
+                a {
+                    position: relative;
+                    padding: 15px;
+                    font-size: 16px;
+                }
+
+                /* Brackets animation */
+                a:before, a:after{
+                    position: absolute;
+                    opacity: 0;
+                    font-size: 30px;
+                    top: 5px;
+                    transition: all 0.3s;
+                }
+
+                a:before {
+                    content: '{';
+                    left: -5px;
+                    transform: translateX(20px);
+                }
+
+                a:after {
+                    content: '}';
+                    right: -5px;
+                    transform: translateX(-20px);
+                }
+
+                a:hover:before, a:hover:after {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+
+            }
+        }
+
+        .k__header-navbar-right {
+            margin-right: 20px;
+
+            li {
+                a {
+                    border-radius: 5px;
+                    border: 2px solid $white1;
+                    padding: 10px 20px 10px 20px;
+                }
+            }
+        }
+    }
+
+    .k__header-icon {
+
+    }
+}
+
+.k__greeting {
+    min-height: 100%;
+    width: 100%;
+    background-color: $white1;
+}
+
+.k__footer {
+    position: relative;
+    display: block;
+    min-height: 200px;
+    width: 100%;
+    @include Footer($black3, $white1);
+
+    .k__footer-column {
+
+    }
+
+    hr {
+        background-color: $white1;
+        margin: 10px 0px 10px 0px;
+    }
+}
