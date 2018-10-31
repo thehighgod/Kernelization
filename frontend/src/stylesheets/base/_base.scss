@@ -1,0 +1,24 @@
+// base/_base.scss - Base styling.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    position: relative;
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+.App {
+    background-color: #FFFFFF;
+    height: 100%;
+    color: #252525;
+    text-align: center;
+}

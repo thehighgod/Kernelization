@@ -1,2 +1,0 @@
-# Kernelization
-Best Discord Ever

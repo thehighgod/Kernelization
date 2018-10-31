@@ -1,0 +1,28 @@
+// main.scss - Everything tied together.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+@charset 'UTF-8';
+
+@import './abstracts/functions',
+        './abstracts/mixins',
+        './abstracts/variables';
+
+@import './base/base',
+        './base/animations',
+        './base/fonts',
+        './base/palette';
+
+//@import './components/[Your component here]';
+
+@import './layout/header',
+        './layout/sidebar',
+        './layout/footer';
+
+@import './pages/admin',
+        './pages/landing',
+        './pages/home';
+
+@import './themes/site';
+
+//@import './vendor/[Your vendor styles]';

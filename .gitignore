@@ -1,4 +1,8 @@
+# Directories
 node_modules
 dist
+build
+
+# File types
 .DS_Store
-frontend/build
+*.tmp

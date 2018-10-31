@@ -1,0 +1,31 @@
+// abstracts/_functions.scss - SCSS Functions.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+/* URL function wrapper.
+ * @param {String} $base - base URL for the asset
+ * @param {String} $type - asset type folder (eg 'fonts')
+ * @param {String} $path - asset path
+ * @return {URL} */
+@function asset($base, $type, $path) {
+    @return url($base + $type + $path);
+}
+
+/* Returns URL to an image based on its path.
+ * @require $base-url
+ * @param {String} $path - image path
+ * @param {String} $base [$base-url] - base URL
+ * @return {URL} */
+@function image($path, $base: $base-url) {
+    @return asset($base, 'img/', $path);
+}
+
+/* Returns URL to a font based on its path.
+ * @require $base-url
+ * @param {String} $path
+ * @param {String} $base [$base-url] - base URL
+ * @return {URL} */
+@function font($path, $base: $base-url) {
+    //@return asset($base, 'fonts/' + $path);
+    @return asset($base, 'fonts/', $path);
+}
