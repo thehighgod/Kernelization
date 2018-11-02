@@ -1,2 +1,4 @@
 # Kernelization
-Best Discord Ever
+Best Discord Server Ever
+
+

@@ -1,9 +1,34 @@
-Kernelization To Do list
+----------------------------
+Kernelization.org To Do list
+----------------------------
 
 November:
-- Finish Webpack configs
-- Production Settings
-- Write Dev and Prod scripts
-- Test Suites
-- Setup Linting
-- 
+----------------------------
+Server Side:
+- Finish webpack configs
+- Production settings
+- Write dev and prod scripts
+- Test suites
+- Setup linting
+- Upload first bootcamp VM
+- Add database authentication
+
+Client Side:
+- Build main site UI
+- Put together a palette
+- Build a theme
+- Landing page
+- Write animations
+- User profiles
+- Badges
+- Progression system
+- Bootcamp
+- Redux
+
+December:
+----------------------------
+Server Side:
+-
+
+Client Side:
+-

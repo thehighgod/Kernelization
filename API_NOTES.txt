@@ -1,9 +1,12 @@
-API Routes:
+-----------
+API Routes
+-----------
 
-/users
-GET, POST, PUT
+Users:
+/users/login
+POST
 
-/auth
+/users/register
 POST
 
 /boxes
@@ -18,3 +21,5 @@ GET, POST, PUT, DELETE
 /factions
 GET, POST, PUT, DELETE
 
+/projects
+GET, POST, PATCH, DELETE

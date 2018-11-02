@@ -5,7 +5,10 @@
 const mongoose = require('mongoose');
 const Box = require('../models/box');
 
+// Controller method to return all boxes.
 exports.get_boxes_all = function(req, res, next) {
+
+	// Find boxes and format output.
 	Box.find()
 		.select("title url boxImage _id")
 		.exec()
@@ -35,6 +38,7 @@ exports.get_boxes_all = function(req, res, next) {
 		});
 };
 
+// Controller method to add a new box.
 exports.add_box = function(req, res, next) {
 	const box = new Box({
 		_id: new mongoose.Types.ObjectId(),
@@ -42,7 +46,8 @@ exports.add_box = function(req, res, next) {
 		url: req.body.url,
 		boxImage: req.file.path
 	});
-	
+
+	// Save the new box to the database.
 	box.save()
 		.then(result => {
 			console.log(result);
@@ -63,8 +68,11 @@ exports.add_box = function(req, res, next) {
 		});
 };
 
+// Controller method to get a box.
 exports.get_box = function(req, res, next) {
 	const id = req.params.boxID;
+
+	// Find a box from the URL parameter and format output.
 	Box.findById(id)
 		.select("title url boxImage _id")
 		.exec()
@@ -90,6 +98,7 @@ exports.get_box = function(req, res, next) {
 		});
 };
 
+// Controller method to update a box.
 exports.update_box = function(req, res, next) {
 	const id = req.params.boxID;
 	const updates = {};
@@ -97,6 +106,7 @@ exports.update_box = function(req, res, next) {
 		updates[ops.propName] = ops.value;
 	}
 
+	// Update box.
 	Box.update({_id: id}, {$set: updates})
 		.exec()
 		.then(result => {
@@ -116,6 +126,7 @@ exports.update_box = function(req, res, next) {
 		});
 };
 
+// Controller method to delete a box.
 exports.remove_box = function(req, res, next) {
 	const id = req.params.boxID;
 
@@ -126,7 +137,7 @@ exports.remove_box = function(req, res, next) {
 				message: "Box deleted!",
 				/*request: {
 				  type: 'POST',
-				  url: "http://localhost:3000/boxes",
+				  url: "http://localhost:3000/api/v1/boxes",
 				  body: {title: 'String', }
 				  }*/
 			})
