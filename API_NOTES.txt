@@ -1,0 +1,20 @@
+API Routes:
+
+/users
+GET, POST, PUT
+
+/auth
+POST
+
+/boxes
+GET, POST, PATCH, DELETE
+
+/challenges
+GET, POST, PUT, DELETE
+
+/contests
+GET, POST, PUT, DELETE
+
+/factions
+GET, POST, PUT, DELETE
+

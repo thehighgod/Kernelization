@@ -138,6 +138,7 @@ module.exports = {
         disableHostCheck: true,
         inline: true,
         historyApiFallback: true,
+	host: "0.0.0.0",
         port: PORT,
 
         // Connecting the frontend with the backend.

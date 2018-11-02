@@ -1,7 +1,7 @@
 {
-  "name": "firstsample",
-  "version": "1.3.0",
-  "description": "This is a sample website!",
+  "name": "kernelization",
+  "version": "0.0.1",
+  "description": "The best discord server ever!",
   "main": "index.js",
   "scripts": {
     "frontend": "webpack-dev-server --config ./config/webpack.config.js --mode development --open",
@@ -33,6 +33,8 @@
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.2",
+    "mongoose": "^5.3.8",
+    "morgan": "^1.9.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",
