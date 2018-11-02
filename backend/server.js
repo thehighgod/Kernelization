@@ -25,7 +25,8 @@ const db_info = {
 mongoose.connect(`mongodb://${db_info.host}/${db_info.name}`, {useNewUrlParser: true});
 
 // App settings
-app.set('port', (process.env.port || 3001));
+app.set('port', (process.env.PORT || 3001));
+app.use(express.static("uploads"));
 app.use(express.static(path.join(__dirname, "frontend", "public", "static")));
 
 app.use(morgan('dev'));
@@ -75,4 +76,5 @@ app.use(function(err, req, res, next) {
 
 app.listen(app.get('port'), function() {
     console.log(`App started on port ${app.get('port')}`);
+	console.log(process.env.JWT_KEY);
 });

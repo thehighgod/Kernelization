@@ -20,10 +20,10 @@ router.get("/", function(req, res, next) {
 router.post("/register", function(req, res, next) {
 
 	// Check if the email is already assigned to a user.
-	User.find({email: req.body})
+	User.find({email: req.body.email})
 		.exec()
-		.then(user => {
-			if (user.length >= 1) {
+		.then(users => {
+			if (users.length >= 1) {
 				return res.status(409).json({
 					message: "Email already registered."
 				});	
@@ -39,7 +39,7 @@ router.post("/register", function(req, res, next) {
 
 						// Create a new User.
 						const user = new User({
-							_id: new mongoose.Schema.Types.ObjectId(),
+							_id: new mongoose.Types.ObjectId(),
 							email: req.body.email,
 							username: req.body.username,
 							password: hash
@@ -63,17 +63,10 @@ router.post("/register", function(req, res, next) {
 				});
 			}
 		})
-		.catch(err => {
-			console.log(err);
-			
-			res.status(500).json({
-				error: err
-			});
-		});
 });
 
 // Login Route
-router.get("/login", function(req, res, next) {
+router.post("/login", function(req, res, next) {
 	User.find({email: req.body.email})
 		.exec()
 		.then(users => {
@@ -84,7 +77,7 @@ router.get("/login", function(req, res, next) {
 					message: "Authentication Failed."
 				});
 			} else {
-				bcrypt.compare(req.body.password, user[0].password, function(err, data) {
+				bcrypt.compare(req.body.password, users[0].password, function(err, data) {
 					if (err) {
 						return res.status(401).json({
 							message: "Authentication Failed"
@@ -93,8 +86,8 @@ router.get("/login", function(req, res, next) {
 
 					if (data) {
 						const token = jwt.sign({
-							email: user[0].email,
-							userID: user[0]._id 
+							email: users[0].email,
+							userID: users[0]._id 
 						}, process.env.JWT_KEY,
 								 {
 									 expiresIn: "1h"
