@@ -2,6 +2,7 @@
 node_modules
 dist
 build
+uploads
 
 # File types
 .DS_Store

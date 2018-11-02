@@ -4,7 +4,7 @@
   "description": "The best discord server ever!",
   "main": "index.js",
   "scripts": {
-    "frontend": "webpack-dev-server --config ./config/webpack.config.js --mode development --open",
+    "frontend": "webpack-dev-server --config ./config/webpack.config.js --mode development",
     "backend": "nodemon backend/server.js",
     "dev": "concurrently \" npm run frontend\" \" npm run backend\"",
     "prod": "webpack --mode production --watch"
@@ -28,17 +28,22 @@
     "url-loader": "^1.1.1"
   },
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "jsonwebtoken": "^8.3.0",
     "mini-css-extract-plugin": "^0.4.2",
     "mongoose": "^5.3.8",
     "morgan": "^1.9.1",
+    "multer": "^1.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-redux": "^5.1.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"

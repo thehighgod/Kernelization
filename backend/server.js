@@ -8,7 +8,11 @@ const fs         = require('fs');
 const path       = require('path');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
+
+// Routes
 const boxRoutes  = require('./routes/box');
+const userRoutes = require('./routes/users');
+
 const app        = express();
 
 const db_info = {
@@ -51,6 +55,7 @@ app.get('/api/v1/', function(req, res, next) {
 });
 
 app.use('/api/v1/boxes/', boxRoutes);
+app.use('/api/v1/users/', userRoutes);
 
 // Error handling.
 app.use(function(req, res, next) {
