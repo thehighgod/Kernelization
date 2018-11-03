@@ -5,6 +5,12 @@
 // Has to be relative to the file it's imported into when compiled.
 $base-url: '../assets/';
 
+// Placeholder
 $breakpoints: (
-
+	xs: 1em,
+	sm: 2em,
+	md: 3em,
+	lg: 4em,
+	xl: 5em,
+	xx: 6em
 );

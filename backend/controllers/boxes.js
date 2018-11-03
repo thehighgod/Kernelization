@@ -5,9 +5,9 @@
 const mongoose = require('mongoose');
 const Box = require('../models/box');
 
-// Controller method to return all boxes.
-exports.get_boxes_all = function(req, res, next) {
-
+// Return all boxes.
+exports.get_boxes_all = function(req, res, next)
+{
 	// Find boxes and format output.
 	Box.find()
 		.select("title url boxImage _id")
@@ -38,7 +38,7 @@ exports.get_boxes_all = function(req, res, next) {
 		});
 };
 
-// Controller method to add a new box.
+// Add a new box.
 exports.add_box = function(req, res, next) {
 	const box = new Box({
 		_id: new mongoose.Types.ObjectId(),
@@ -68,7 +68,7 @@ exports.add_box = function(req, res, next) {
 		});
 };
 
-// Controller method to get a box.
+// Get a box.
 exports.get_box = function(req, res, next) {
 	const id = req.params.boxID;
 
@@ -98,7 +98,7 @@ exports.get_box = function(req, res, next) {
 		});
 };
 
-// Controller method to update a box.
+// Update a box.
 exports.update_box = function(req, res, next) {
 	const id = req.params.boxID;
 	const updates = {};
@@ -126,7 +126,7 @@ exports.update_box = function(req, res, next) {
 		});
 };
 
-// Controller method to delete a box.
+// Delete a box.
 exports.remove_box = function(req, res, next) {
 	const id = req.params.boxID;
 

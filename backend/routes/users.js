@@ -138,7 +138,6 @@ router.delete("/:userId", function(req, res, next) {
 				error: err
 			});
 		});
-	
 });
 
 module.exports = router

@@ -76,5 +76,4 @@ app.use(function(err, req, res, next) {
 
 app.listen(app.get('port'), function() {
     console.log(`App started on port ${app.get('port')}`);
-	console.log(process.env.JWT_KEY);
 });
