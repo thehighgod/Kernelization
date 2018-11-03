@@ -12,6 +12,10 @@ Server Side:
 - Setup linting
 - Upload first bootcamp VM
 - Add database authentication
+- User roles
+- Contests
+- Bootcamp
+- User profiles
 
 Client Side:
 - Build main site UI

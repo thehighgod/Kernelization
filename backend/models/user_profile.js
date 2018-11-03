@@ -6,14 +6,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userProfileSchema = Schema({
-	user: {
-		type: Schema.Types.ObjectId,
-		ref: "User",
-		required: true
+	firstName:  {
+		type: String,
+		required: false
+	},
+
+	lastName: {
+		type: String,
+		required: false
 	},
 
 	status: {
 		type: String,
+		required: false
+	},
+
+	avatar: {
+		type: String,
+		default: "",
 		required: false
 	},
 
@@ -24,12 +34,20 @@ const userProfileSchema = Schema({
 
 	level: {
 		type: Number,
+		default: 1,
 		required: true
 	},
 
 	xp: {
 		type: Number,
+		default: 0,
 		required: true
+	},
+
+	rep: {
+		type: Number,
+		default: 0,
+		required: true,
 	},
 
 	joined: {

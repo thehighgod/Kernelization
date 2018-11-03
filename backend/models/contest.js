@@ -5,6 +5,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Contests contain a unique id, contest creator
+// associated with a user, creation date,
+// start and end dates (to and from), contest state,
+// and an array of participants.
 const contestSchema = Schema({
 	_id: Schema.Types.ObjectId,
 	

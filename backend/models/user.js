@@ -5,6 +5,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// User schema consists of a user id,
+// email, username, password and profile.
 const userSchema = Schema({
 	_id: Schema.Types.ObjectId,
 	
@@ -26,17 +28,6 @@ const userSchema = Schema({
 		required: true
 	},
 
-	joined: {
-		type: Date,
-		default: Date.now(),
-		required: true
-	},
-
-	avatar: {
-		type: String,
-		default: "",
-		required: false
-	}
 });
 
 module.exports = mongoose.model("User", userSchema);

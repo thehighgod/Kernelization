@@ -37,20 +37,20 @@ const upload = multer({
 	});
 
 // All Boxes GET
-router.get("/", boxController.get_boxes_all);
+router.get("/", boxController.getBoxesAll);
 
 // All Boxes POST
 router.post("/", checkPerms,
 			upload.single("boxImage"),
-			boxController.add_box);
+			boxController.addBox);
 
 // Specific Box GET
-router.get("/:boxID", boxController.get_box);
+router.get("/:boxID", boxController.getBox);
 
 // Specific Box PATCH
-router.patch("/:boxID", checkPerms, boxController.update_box);
+router.patch("/:boxID", checkPerms, boxController.updateBox);
 
 // Specific Box DELETE
-router.delete("/:boxID", checkPerms, boxController.remove_box);
+router.delete("/:boxID", checkPerms, boxController.removeBox);
 
 module.exports = router;

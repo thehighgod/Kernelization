@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const Box = require('../models/box');
 
 // Return all boxes.
-exports.get_boxes_all = function(req, res, next)
+exports.getBoxesAll = function(req, res, next)
 {
 	// Find boxes and format output.
 	Box.find()
-		.select("title url boxImage _id")
+		.select("title creator description url boxImage _id")
 		.exec()
 		.then(docs => {
 			const response = {
@@ -18,6 +18,8 @@ exports.get_boxes_all = function(req, res, next)
 				boxes: docs.map(box => {
 					return {
 						title: box.title,
+						creator: box.creator,
+						description: box.description,
 						url: box.url,
 						boxImage: box.boxImage,
 						_id: box._id,
@@ -39,10 +41,11 @@ exports.get_boxes_all = function(req, res, next)
 };
 
 // Add a new box.
-exports.add_box = function(req, res, next) {
+exports.addBox = function(req, res, next) {
 	const box = new Box({
 		_id: new mongoose.Types.ObjectId(),
 		title: req.body.title,
+		description: req.body.description,
 		url: req.body.url,
 		boxImage: req.file.path
 	});
@@ -55,6 +58,7 @@ exports.add_box = function(req, res, next) {
 				message: "Created box successfully",
 				newBox: {
 					title: result.title,
+					description: result.description,
 					url: result.url,
 					_id: result._id
 				}
@@ -69,7 +73,7 @@ exports.add_box = function(req, res, next) {
 };
 
 // Get a box.
-exports.get_box = function(req, res, next) {
+exports.getBox = function(req, res, next) {
 	const id = req.params.boxID;
 
 	// Find a box from the URL parameter and format output.
@@ -99,7 +103,7 @@ exports.get_box = function(req, res, next) {
 };
 
 // Update a box.
-exports.update_box = function(req, res, next) {
+exports.updateBox = function(req, res, next) {
 	const id = req.params.boxID;
 	const updates = {};
 	for (const ops of req.body) {
@@ -127,7 +131,7 @@ exports.update_box = function(req, res, next) {
 };
 
 // Delete a box.
-exports.remove_box = function(req, res, next) {
+exports.removeBox = function(req, res, next) {
 	const id = req.params.boxID;
 
 	Box.remove({_id: id})

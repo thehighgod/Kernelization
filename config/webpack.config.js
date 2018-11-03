@@ -1,8 +1,5 @@
-// Webpack Configuration File
+// config/webpack.config.js - Webpack Configuration File
 // Copywrite (C) 2018, Brett Broadhurst
-// Please don't use this version of the webpack config for production!!!
-// People will die.
-
 // Everything is subject to change.
 
 'use strict';
@@ -12,7 +9,8 @@ const ExtractTextPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const projectPaths      = require('./projectPaths.js');
 
-let env = process.env.NODE_ENV ? process.env.NODE_ENV : 'dev';
+// Do something with this later.
+let env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
 
 // Server variables.
 const HOST = process.env.HOST || '0.0.0.0';
@@ -36,30 +34,21 @@ const ExtractTextPluginConfig = new ExtractTextPlugin({
 
 // Configurations for the web stack
 module.exports = {
-    // This is where we specify our many possible entry points.
     entry: [
         projectPaths.indexJsPath,
     ],
 
-    // The bundle.js file will built and sent to live in <project-root>/dist.
     output: {
-        // This produces a virtual directory served by the webpack dev server.
-        // It only exists when the server is running. It will not appear in your
-        // project tree.
         path: projectPaths.buildPath,
         pathinfo: true,
         filename: 'bundle.js',
         publicPath: PUBLIC_PATH
     },
 
-    // These are to do all our transpiling and compiling.
-    // Babel is transpiled here and SCSS is compiled here.
+    // Transpiling and compiling.
     module: {
         rules: [
-            // Javascript and JSX configurations.
-            // This is needed so your React code written in the ES6 standard
-            // can be rendered on all browsers (excluding the ones that babel
-            // does not support, of course).
+            // Javascript and JSX configuration.
             {
                 test: /\.(js|jsx)?$/,
                 include: projectPaths.srcPath,
@@ -72,11 +61,9 @@ module.exports = {
                     },
                 ]
             },
+			
             // CSS Preprocessor configurations.
-            // Here you can load SCSS/SASS or LESS in order to make styling
-            // more efficient and intuitive for development.
-            // You will need the appropriate loaders in order for your
-            // preprocessor of choice to be compiled.
+            // SCSS loading.
             {
                 test: /\.s?css$/,
                 include: projectPaths.stylesPath,
@@ -84,9 +71,9 @@ module.exports = {
                     {
                         loader: require.resolve('style-loader'),
                     },
+					
                     // I will find a better solution to this.
                     ExtractTextPlugin.loader,
-
                     {
                         loader: require.resolve('css-loader'),
                         options: {
@@ -103,6 +90,7 @@ module.exports = {
                     },
                 ],
             },
+			
             // Compiled CSS configurations.
             {
                 test: /\.css$/,
@@ -112,21 +100,31 @@ module.exports = {
                     require.resolve('css-loader')
                 ],
             },
-            // Static images configurations.
-            // Here you can load your images using Base64 strings,
-            // which helps optimize your code. Pretty cool, right?
+			
+            // Static images configuration.
+            // Load your images using Base64 strings.
             {
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$/i,
                 use: [
                     {
                         loader: require.resolve('file-loader'),
-                        // Convert files greater than 10KB to Base64 strings.
                         options: {
                             limit: 10000
                         },
                     },
                 ],
             },
+			
+			// Fonts configuration.
+			// No special configs.
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				use: [
+					{
+						loader: require.resolve('file-loader')
+					}
+				],
+			},
         ]
     },
 
@@ -138,13 +136,13 @@ module.exports = {
         disableHostCheck: true,
         inline: true,
         historyApiFallback: true,
-	host: "0.0.0.0",
+		host: HOST,
         port: PORT,
 
         // Connecting the frontend with the backend.
         proxy: {
             "/api/**": {
-                target: "http://0.0.0.0:3001",
+                target: `http://${HOST}:${PORT}`,
                 secure: false,
                 changeOrigin: true
             }

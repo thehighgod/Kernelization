@@ -1,4 +1,4 @@
-// backend/server.js - Server
+// backend3/server.js - Server
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
@@ -27,7 +27,7 @@ mongoose.connect(`mongodb://${db_info.host}/${db_info.name}`, {useNewUrlParser: 
 // App settings
 app.set('port', (process.env.PORT || 3001));
 app.use(express.static("uploads"));
-app.use(express.static(path.join(__dirname, "frontend", "public", "static")));
+app.use(express.static(path.join("frontend", "public", "static")));
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
