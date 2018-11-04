@@ -1,6 +1,6 @@
 {
 	"name": "kernelization",
-	"version": "0.0.4",
+	"version": "0.2.0",
 	"description": "The best discord server ever!",
 	"private": true,
 	"main": "index.js",
@@ -54,6 +54,7 @@
 		"react-redux": "^5.1.0",
 		"react-router": "^4.3.1",
 		"react-router-dom": "^4.3.1",
-		"redux": "^4.0.1"
+		"redux": "^4.0.1",
+		"redux-thunk": "^2.3.0"
 	}
 }
