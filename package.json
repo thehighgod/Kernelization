@@ -10,7 +10,8 @@
 		"dev": "concurrently \" npm run frontend\" \" npm run backend\"",
 		"prod": "webpack --mode production --watch",
 		"clean": "rimraf dist",
-		"wipe": "rimraf node_modules && npm install"
+		"wipe": "rimraf node_modules && npm install",
+		"count": "git ls-files -- . ':!:*.json' --exclude-standard | xargs wc -l"
 	},
 	"author": "Brett Broadhurst <brettbroadhurst@gmail.com>, Ankit Kumar Tyagi <ankit.tyagiw@gmail.com>",
 	"license": "MIT",
