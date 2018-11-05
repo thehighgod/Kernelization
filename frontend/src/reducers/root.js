@@ -5,6 +5,7 @@
 import {combineReducers} from "redux";
 import {authReducer} from "./authReducer";
 
+// Create and export the root reducer.
 export default combineReducers({
 	authReducer
 });

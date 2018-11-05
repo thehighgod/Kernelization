@@ -1,24 +1,31 @@
-// src/reducers/auth.js - Reducer for session actions.
+// src/reducers/authReducer.js - Authentication action reducer.
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-const initialState = {
-	formState: {
-		email: "",
-		password: ""
-	},
-	loggedIn: false
-};
+import {types} from "../constants/actionTypes";
+
+let user = JSON.parse(localStorage.getItem("user"));
+const initialState = user ? {loggedIn: true, user} : {};
 
 export function authReducer(state = initialState, action)
 {
 	switch(action.type) {
-	case 1:
-		return {
-			loggedIn: true
-		};
-		
-	default:
-		return state;
+		case types.AUTH_USER_REQUEST:
+			return {
+				loggingIn: true,
+				user: action.user
+			};
+		case types.AUTH_USER_SUCCESS:
+			return {
+				loggedIn: true,
+				user: action.user
+			};
+		case types.AUTH_USER_FAILURE:
+			return {};
+		case types.AUTH_USER_LOGOUT:
+			return {};
+
+		default:
+			return state;
 	}
 }

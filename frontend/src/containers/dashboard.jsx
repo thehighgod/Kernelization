@@ -3,6 +3,15 @@
 //
 
 import React, {Component} from "react";
+import {connect} from "react-redux";
+
+function mapStateToProps(state){
+	const {authReducer} = state;
+	const {user} = authReducer;
+	return {
+		user
+	};
+};
 
 class DashboardView extends Component {
 	componentDidMount()
@@ -20,4 +29,4 @@ class DashboardView extends Component {
 	}
 };
 
-export default DashboardView;
+export default connect(mapStateToProps)(DashboardView);

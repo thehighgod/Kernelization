@@ -14,15 +14,13 @@
 
 html, body {
     position: relative;
+	height: 100%;
+	width: 100%;
 }
 
-body > #root > div {
-  height: 100vh;
-}
-
-.App {
-    background-color: #FFFFFF;
-    height: 100%;
-    color: #252525;
-    text-align: center;
+#root {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background: #FFFFFF;
 }

@@ -141,8 +141,8 @@ module.exports = {
 
         // Connecting the frontend with the backend.
         proxy: {
-            "/api/**": {
-                target: `http://${HOST}:${PORT}`,
+            "/api/v1/**": {
+                target: `http://${HOST}:3001`,
                 secure: false,
                 changeOrigin: true
             }

@@ -3,6 +3,7 @@
 //
 
 import React, {Component} from "react";
+import RegisterForm from "./forms/registerForm.jsx";
 
 class RegisterView extends Component {
 	componentDidMount()
@@ -15,6 +16,7 @@ class RegisterView extends Component {
 		return (
 			<div className="k__register">
 				<h1>Register</h1>
+				<RegisterForm/>
 			</div>
 		);
 	}
