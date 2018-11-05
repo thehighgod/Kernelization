@@ -5,14 +5,16 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {types} from "../../constants/actionTypes";
-import userActions from "../../actions/userActions";
-import client from "../../utils/client";
+import {registerUser, logoutUser} from "../../actions/userActions";
 
 function mapStateToProps(state)
 {
-	const {loggingIn} = state.authentication;
+	const {loggingIn} = state.authReducer;
+	const {registering} = state.registerReducer;
+	
 	return {
-		loggingIn
+		loggingIn,
+		registering
 	};
 }
 
@@ -35,7 +37,7 @@ class RegisterForm extends Component {
 
 	componentDidMount()
 	{
-		this.props.dispatch();
+		this.props.dispatch(logoutUser());
 	}
 
 	onFormChange(event)
@@ -53,10 +55,11 @@ class RegisterForm extends Component {
 		});
 
 		const {dispatch} = this.props;
+		const {email, username, password1, password2} = this.state;
 
 		if (email && username && password1 && password2) {
 			if (password1 === password2) {
-				dispatch();
+				dispatch(registerUser(email, username, password1));
 			} else {
 				console.log("Passwords do not match!");
 			}
@@ -66,8 +69,7 @@ class RegisterForm extends Component {
 	render()
 	{
 		return (
-			<form onSubmit={this.onFormSubmit(username, email,
-											  password1, password2)}>
+			<form onSubmit={this.onFormSubmit}>
 				<input type="text"
 					   label="Username"
 					   name="username"

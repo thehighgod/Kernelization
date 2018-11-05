@@ -2,24 +2,33 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-import types from "../constants/actionTypes";
+import {types} from "../constants/actionTypes";
 
-const initialState = {
-	
-};
+let user = JSON.parse(localStorage.getItem("user"));
+const initialState = user ? {loggedIn: true, user} : {};
 
-function registerReducer(state = initialState, action)
+export function registerReducer(state = initialState, action)
 {
 	switch(action.type) {
-	case types.REGISTER_USER_SUCCESS:
-		return state;
+		case types.REGISTER_USER_REQUEST:
+			return {
+				registering: true,
+				user: action.user
+			};
+			
+		case types.REGISTER_USER_SUCCESS:
+			return {
+				registered: true,
+				loggedIn: true,
+				user: action.user
+			};
 		
-	case types.REGISTER_USER_FAILURE:
-		return state;
+		case types.REGISTER_USER_FAILURE:
+			return {};
 		
-	default:
-		return state;
+		default:
+			return state;
 	}
 }
 
-export default registerReducer;
+

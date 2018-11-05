@@ -12,9 +12,11 @@ class AdminView extends Component {
 	
 	render()
 	{
-		<div className="k__admin">
-			<h1>Admin</h1>
-		</div>
+		return (
+			<div className="k__admin">
+				<h1>Admin</h1>
+			</div>
+		);
 	}
 };
 

@@ -15,7 +15,7 @@ function loginUser(email, password)
 			"Accept": "application/json",
 			"Content-Type": "application/json"
 		}
-	}).then(checkStatus)
+	}).then(checkLogin)
 	  .then(user => {
 		  if (user.token) {
 			  localStorage.setItem("user", JSON.stringify(user));
@@ -70,13 +70,32 @@ function getBoxes(success)
 		.then(success);
 }
 
+function checkLogin(response)
+{
+	return response.text().then(text => {
+		const data = text && JSON.parse(text);
+
+		if (!response.ok) {
+			if (response.status === 401) {
+				logoutUser();
+				location.reload(true);
+			}
+
+			const err = (data && data.message) || response.statusText;
+			return Promise.reject(err);
+		}
+
+		return data;
+	});
+}
+
 // Error checking.
 function checkStatus(response)
 {
 	if (response.status >= 200 && response.status < 300) {
 		return response;
 	} else {
-		console.log(response);
+		console.log(response.message);
 		const err = new Error(`HTTP Error ${response.statusText}`);
 		err.status = response.statusText;
 		err.response = response;
