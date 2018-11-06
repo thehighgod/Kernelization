@@ -9,16 +9,70 @@ const User     = require('../models/user');
 
 // Return all registered users.
 exports.getUsers = function(req, res, next)
-{
-	res.status(200).json({
-		message: "Under construction."
-	});
+{	
+	User.find()
+		.select("username email role isAdmin _id")
+		.exec()
+		.then(users => {
+			const response = {
+				count: users.length,
+				users: users.map(user => {
+					return {
+						username: user.username,
+						email: user.email,
+						role: user.role,
+						isAdmin: user.role,
+						_id: user._id,
+						request: {
+							type: "GET",
+							url: "http://localhost:3000/api/vi/users/"
+							   + user._id
+						}
+					};
+				})
+			};
+			
+			res.status(200).json(users);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json({
+				error: err
+			});
+		});
 };
 
 // Return a select user.
 exports.getUser = function(req, res, next)
 {
-	res.send("Under construction.");
+	const id = req.params.userId;
+
+	User.findById(id)
+		.select("username email role isAdmin _id")
+		.exec()
+		.then(user => {
+			console.log(user);
+
+			if (user) {
+				res.status(200).json({
+					user: user,
+					request: {
+						type: "GET",
+						url: "http://localhost:3000/api/v1/boxes/"
+						   + user._id
+					}
+				});
+			} else {
+				res.status(404).json({
+					message: "No entry found for provided ID."
+				});
+			}
+		})
+		.catch(err => {
+			res.status(500).json({
+				error: err
+			});
+		});
 };
 
 // Edit a select user.
@@ -33,7 +87,6 @@ exports.editUser = function(req, res, next)
 exports.deleteUser = function(req, res, next)
 {
 	const id = req.params.userId;
-
 	User.remove({_id: id})
 		.exec()
 		.then(result => {
@@ -118,7 +171,9 @@ exports.loginUser = function(req, res, next)
 					if (data) {
 						const token = jwt.sign({
 							email: users[0].email,
-							userID: users[0]._id 
+							userID: users[0]._id,
+							role: users[0].role,
+							isAdmin: users[0].isAdmin
 						}, process.env.JWT_KEY,
 								 {
 									 expiresIn: "1h"

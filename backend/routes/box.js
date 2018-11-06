@@ -7,7 +7,7 @@ const multer = require('multer');
 const router = express.Router();
 
 // Middleware
-const checkPerms = require('../middleware/check_permissions');
+const checkAuth = require('../middleware/check_auth');
 
 // Controllers
 const boxController = require('../controllers/boxes');
@@ -40,7 +40,7 @@ const upload = multer({
 router.get("/", boxController.getBoxesAll);
 
 // All Boxes POST
-router.post("/", checkPerms,
+router.post("/", checkAuth,
 			upload.single("boxImage"),
 			boxController.addBox);
 
@@ -48,9 +48,9 @@ router.post("/", checkPerms,
 router.get("/:boxID", boxController.getBox);
 
 // Specific Box PATCH
-router.patch("/:boxID", checkPerms, boxController.updateBox);
+router.patch("/:boxID", checkAuth, boxController.updateBox);
 
 // Specific Box DELETE
-router.delete("/:boxID", checkPerms, boxController.removeBox);
+router.delete("/:boxID", checkAuth, boxController.removeBox);
 
 module.exports = router;

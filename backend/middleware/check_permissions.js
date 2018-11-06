@@ -1,21 +1,26 @@
-// backend/middleware/check_permissions.js - Middleware for route permissions.
-// Copywrite (C) 2018, Brett Broadhurst
+// middleware/check_permissions.js - Middleware for checking permissions. 
+//
 //
 
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-// This middleware verifies whether a user is logged in or not.
-// Add this to any routes that you want auth protected.
-
-module.exports = function(req, res, next) {
+// This middleware verifies whether a user is an admin or not.
+// Add this to routes you want admin protected.
+module.exports = function(req, res, next)
+{
 	try {
-		const decoded = jwt.verify(res.body.token,
-								   process.env.JWT_TOKEN);
-		req.userData = decoded;
-		next();
+		if (req.userData.isAdmin) {
+			console.log("Good!");
+			next();
+		} else {
+			return res.status(401).json({
+				message: "You do not have permission to access this."
+			});
+		}
+		
 	} catch (err) {
 		return res.status(401).json({
-			message: "Authentication Failed."
+			message: "You do not have permission to access this."
 		});
 	}
-};
+}

@@ -84,10 +84,11 @@ exports.getBox = function(req, res, next) {
 			console.log(doc);
 			if (doc) {
 				res.status(200).json({
-					product: doc,
+					box: doc,
 					request: {
 						type: 'GET',
-						url: "http://localhost:3000/api/v1/boxes/",
+						url: "http://localhost:3000/api/v1/boxes/"
+						+ doc._id,
 					}
 				});
 			} else {

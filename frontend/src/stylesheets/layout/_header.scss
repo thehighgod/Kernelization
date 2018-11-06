@@ -1,3 +1,118 @@
 // layout/_header.scss - Site header.
 // Copywrite (C) 2018, Brett Broadhurst
 //
+
+.k__header {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	float: left;
+	
+	top: 0;
+	left: 0;
+
+	height: 15%;
+	width: 100%;
+
+	padding: 1em;
+	background: $black1;
+
+	.k__header-branding {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		img {
+
+		}
+
+		span {
+			//height: 100%;
+			color: $white1;
+		}
+	}
+
+	.k__header__nav {
+		height: 100%;
+		width: auto;
+		flex-grow: 2;
+		
+		ul {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			list-style-type: none;
+			padding: 1em;
+			
+			li {
+				margin: 0px 5px 0px 5px;
+				padding: 1em;
+				
+				a {
+					position: relative;
+					color: $white1;
+					text-decoration: none;
+
+					&:before, &:after {
+						position: absolute;
+						opacity: 0;
+						font-size: 1em;
+						top: 0px;
+						transition: all 0.3s;
+					}
+
+					&:before {
+						content: '{';
+						left: -8px;
+						transform: translateX(20px);
+					}
+
+					&:after {
+						content: '}';
+						right: -8px;
+						transform: translateX(-20px);
+					}
+
+					&:hover:before, &:hover:after {
+						opacity: 1;
+						transform: translate(0px);
+					}
+					
+					&:hover {
+
+					}
+				}
+			}
+		}
+	}
+
+	.k__header__login {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		float: right;
+		width: 10%;
+		
+		a {
+			text-decoration: none;
+			width: 100%;
+			
+			&:hover {
+
+			}
+
+			button {
+				border-radius: 10px;
+				border: 2px solid $white1;
+				background: transparent;
+				color: $white1;
+				padding: 0.5em;
+				font-size: 1em;
+				width: 100%;
+			}
+		}
+	}
+}

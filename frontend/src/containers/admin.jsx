@@ -3,6 +3,12 @@
 //
 
 import React, {Component} from "react";
+import {connect} from "react-redux";
+
+function mapStateToProps(state)
+{
+
+}
 
 class AdminView extends Component {
 	componentDidMount()
@@ -15,9 +21,12 @@ class AdminView extends Component {
 		return (
 			<div className="k__admin">
 				<h1>Admin</h1>
+				<div className="k__admin-tables">
+
+				</div>
 			</div>
 		);
 	}
 };
 
-export default AdminView;
+export default connect(mapStateToProps)(AdminView);
