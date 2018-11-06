@@ -1,0 +1,82 @@
+// abstracts/_extends.scss - SCSS Extends to inherit from.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+// Pages
+%page {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+%modal {
+
+}
+
+%tooltip {
+
+}
+
+%flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+%k-shadow {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+				0 6px 6px, rgba(0,0,0,0.23);
+				  
+}
+
+
+// Forms
+%clearfix:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+
+%k-form {
+	@extend %k-shadow;
+	display: relative;
+	border-radius: 10px;
+	margin: auto;
+	overflow: hidden;
+
+	input[type="placeholder"] {
+				
+	}
+			
+	input[type="text"] {
+				
+	}
+
+	input[type="password"] {
+		
+	}
+}
+
+%k-form-input {
+	display: block;
+	border-radius: 10px;
+	padding: 1em;
+	background: #CCCCCC;
+	
+	&:focus {
+
+	}
+}
+
+%k-form-group {
+	
+}
+
+%k-form-submit {
+	background-color: green; 
+	color: white;
+}
+
+%k-form-cancel {
+
+}

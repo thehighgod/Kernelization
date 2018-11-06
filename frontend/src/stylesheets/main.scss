@@ -3,26 +3,8 @@
 //
 
 @charset 'UTF-8';
-
-@import './abstracts/functions',
-        './abstracts/mixins',
-        './abstracts/variables';
-
-@import './base/base',
-        './base/animations',
-        './base/fonts',
-        './base/palette';
-
-//@import './components/[Your component here]';
-
-@import './layout/header',
-        './layout/sidebar',
-        './layout/footer';
-
-@import './pages/admin',
-        './pages/landing',
-        './pages/home';
-
-@import './themes/site';
-
-//@import './vendor/[Your vendor styles]';
+@import './abstracts/functions', './abstracts/mixins', './abstracts/extends', './abstracts/variables';
+@import './base/base', './base/animations','./base/fonts', './base/palette';
+@import './layout/header','./layout/body','./layout/sidebar','./layout/footer';
+@import './pages/admin', './pages/landing', './pages/home', './pages/login', './pages/register';
+@import './themes/site', './themes/admin';

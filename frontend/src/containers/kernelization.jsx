@@ -44,16 +44,18 @@ class Kernelization extends Component {
 			<Router history={history}>
 				<React.Fragment>
 					<Header />
-					<Switch>
-						<Route exact path="/" component={LandingView}/>
-						<Route exact path="/login" component={LoginView}/>
-						<Route exact path="/register" component={RegisterView}/>
-						<AuthRoute exact path="/dashboard" component={DashboardView}/>
-						<AuthRoute exact path="/bootcamp" component={BootcampView}/>
-						<AuthRoute exact path="/contests" component={ContestsView}/>
-						<AuthRoute exact path="/admin" component={AdminView}/>
-						<Route path="*" component={Error404View}/> 
-					</Switch>
+					<div className="k__body">
+						<Switch>
+							<Route exact path="/" component={LandingView}/>
+							<Route exact path="/login" component={LoginView}/>
+							<Route exact path="/register" component={RegisterView}/>
+							<AuthRoute exact path="/dashboard" component={DashboardView}/>
+							<AuthRoute exact path="/bootcamp" component={BootcampView}/>
+							<AuthRoute exact path="/contests" component={ContestsView}/>
+							<AuthRoute exact path="/admin" component={AdminView}/>
+							<Route path="*" component={Error404View}/> 
+						</Switch>
+					</div>
 					<Footer />
 				</React.Fragment>
 			</Router>

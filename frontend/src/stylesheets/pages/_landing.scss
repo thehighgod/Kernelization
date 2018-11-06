@@ -1,3 +1,11 @@
 // pages/_landing.scss - Landing page styles.
 // Copywrite (C) 2018, Brett Broadhurst
 //
+
+.k__header {
+	background: none;
+}
+
+h1, h2, span, a {
+	color: $white1;
+}

@@ -63,23 +63,31 @@ class LoginForm extends Component {
 		return (
 			<form className="k__login__form"
 				  onSubmit={this.onFormSubmit} >
-				
-				<input type="text"
-					   label="email"
-					   name="email"
-					   placeholder="Enter your email"
-					   value={this.state.email}
-					   onChange={this.onFormChange} />
-				
-				<input type="password"
-					   label="password"
-					   name="password"
-					   value={this.state.password}
-					   placeholder="Enter your password"
-					   onChange={this.onFormChange} />
-				
-				<input type="submit"
-					   value="Login" />
+				<div className="k__login__form-header">
+					<span>Login</span>
+				</div>
+
+				<div className="k__login__form-body">
+					<input type="text"
+						   label="email"
+						   name="email"
+						   placeholder="Enter your email"
+						   value={this.state.email}
+						   onChange={this.onFormChange} />
+					
+					<input type="password"
+						   label="password"
+						   name="password"
+						   value={this.state.password}
+						   placeholder="Enter your password"
+						   onChange={this.onFormChange} />
+
+					<hr />
+					<input type="submit"
+						   value="Login" />
+				</div>
+				<div className="k__login__form-footer">
+				</div>
 			</form>
 		);
 	}

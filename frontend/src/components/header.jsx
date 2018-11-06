@@ -11,7 +11,7 @@ const Header = (props) => {
 		<div className="k__header">
 			<div className="k__header-branding">
 				<img className="k__header-branding-logo" src="#" alt="#"/>
-				<span>Kernelization</span>
+				<Link to="/">Kernelization</Link>
 			</div>
 			
 			<Navbar isLoggedIn={false}/>

@@ -1,0 +1,59 @@
+// pages/_login.scss - Login Page Styles
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+.k__login {
+	@extend %page;
+	
+	.k__login__form {
+		@extend %k-form;
+		background: $white1;
+		height: 70%;
+		width: 40%;
+		margin-top: 2em;
+
+		input {
+			@extend %k-form-input;
+			border: 2px solid $black3;
+			margin: 10px auto;
+			width: 80%;
+		}
+
+		.k__login__form-header {
+			display: block;
+			height: 20%;
+			background: $cyan1;
+			overflow: hidden;
+
+			span {
+				display: block;
+				font-size: 3em;
+				margin: auto;
+				padding: 10px;
+				width: 100%;
+				text-align: center;
+				color: $white1;
+			}
+		}
+
+		.k__login__form-body {
+			padding: 1em;
+
+			hr {
+				margin: 1em;
+				border: 1px solid black;
+				background: none;
+			}
+
+			input[type="submit"] {
+				@extend %k-form-submit;
+				width: 60%;
+			}
+		}
+
+		.k__login__form-footer {
+			@extend %flex-center;
+			padding: 1em;
+		}
+	}
+}

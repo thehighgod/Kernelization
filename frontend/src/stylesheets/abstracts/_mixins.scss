@@ -1,3 +1,10 @@
 // abstracts/_mixins.scss - SCSS Mixins.
 // Copywrite (C) 2018, Brett Broadhurst
 //
+
+@mixin absolute-center ($top: auto, $left: auto) {
+	position: absolute;
+	top: $top;
+	left: $left;
+	transform: translate(50%, -50%);
+}

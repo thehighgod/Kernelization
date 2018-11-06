@@ -7,7 +7,8 @@ import React from "react";
 const Footer = (props) => {
 	return (
 		<div className="k__footer">
-			
+			<span className="copywrite">
+			</span>
 		</div>
 	);
 }
