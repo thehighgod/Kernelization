@@ -27,6 +27,7 @@ function mapStateToProps(state)
 	return state;
 }
 
+// Main Application
 class Kernelization extends Component {
 	constructor(props)
 	{
