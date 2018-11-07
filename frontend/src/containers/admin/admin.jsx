@@ -3,9 +3,17 @@
 //
 
 import React, {Component} from "react";
-import {Link, Redirect, Route, Switch} from "react-router-dom";
+import {Link, Redirect,
+		Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-import {AdminRoute} from "./adminRoute.jsx";
+import {AdminRoute} from "../routes/adminRoute.jsx";
+
+// Views
+import AdminDashboard from "./adminDashboard.jsx";
+import AdminAnalytics from "./adminAnalytics.jsx";
+import AdminManager from "./adminManager.jsx";
+import AdminConfig from "./adminConfig.jsx";
+import AdminSettings from "./adminSettings.jsx";
 
 // Redux
 function mapStateToProps(state)
@@ -37,71 +45,6 @@ const AdminSidebar = (props) => {
 	);
 };
 
-class AdminLogin extends Component {
-	render()
-	{
-		return (
-			<div className="admin__login">
-				
-			</div>
-		);
-	}
-};
-
-class AdminDashboard extends Component {
-	render()
-	{
-		return (
-			<div className="admin__dashboard">
-				
-			</div>
-		);
-	}
-};
-
-class AdminManager extends Component {
-	render()
-	{
-		return (
-			<div className="admin__manager">
-				
-			</div>
-		);
-	}
-};
-
-class AdminAnalytics extends Component {
-	render()
-	{
-		return (
-			<div className="admin__analytics">
-				
-			</div>
-		);
-	}
-};
-
-class AdminConfig extends Component {
-	render()
-	{
-		return (
-			<div className="admin__config">
-				
-			</div>
-		);
-	}
-};
-
-class AdminSettings extends Component {
-	render()
-	{
-		return (
-			<div className="admin__settings">
-				
-			</div>
-		);
-	}
-};
 
 // Main display for the admin interface.
 class AdminMain extends Component {

@@ -19,8 +19,6 @@ function loginUser(email, password)
 					  user
 				  });
 
-				  //dispatch(push("/dashboard"));
-
 				  history.push("/dashboard");
 				  
 			  })
@@ -43,6 +41,7 @@ function loginUser(email, password)
 	}
 }
 
+// User register action creator.
 function registerUser(email, username, password)
 {
 	return dispatch => {
@@ -78,6 +77,7 @@ function registerUser(email, username, password)
 	}
 }
 
+// User logout action creator.
 function logoutUser()
 {
 	client.logout();

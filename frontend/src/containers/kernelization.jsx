@@ -6,7 +6,8 @@ import React, {Component} from "react";
 import {Router, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {history} from "../utils/history";
-import {AuthRoute} from "./authRoute.jsx";
+import {AdminRoute} from "./routes/adminRoute.jsx";
+import {AuthRoute} from "./routes/authRoute.jsx";
 
 // Main Layout
 import Header from "../components/header.jsx";
@@ -17,11 +18,13 @@ import LandingView from "./landing.jsx";
 import LoginView from "./login.jsx";
 import RegisterView from "./register.jsx";
 import DashboardView from "./dashboard.jsx";
-import BootcampView from "./bootcamp.jsx";
+import BootcampView from "./bootcamp/bootcamp.jsx";
 import ContestsView from "./contests.jsx";
-import AdminView from "./admin.jsx";
+import AdminView from "./admin/admin.jsx";
+import AdminLogin from "./admin/adminLogin.jsx";
 import Error404View from "./404.jsx";
 
+// Redux
 function mapStateToProps(state)
 {
 	return state;
@@ -47,14 +50,29 @@ class Kernelization extends Component {
 					<Header />
 					<div className="k__body">
 						<Switch>
-							<Route exact path="/" component={LandingView}/>
-							<Route exact path="/login" component={LoginView}/>
-							<Route exact path="/register" component={RegisterView}/>
-							<AuthRoute exact path="/dashboard" component={DashboardView}/>
-							<AuthRoute exact path="/bootcamp" component={BootcampView}/>
-							<AuthRoute exact path="/contests" component={ContestsView}/>
-							<AuthRoute exact path="/admin" component={AdminView}/>
-							<Route path="*" component={Error404View}/> 
+							<Route exact path="/"
+								   component={LandingView}/>
+							<Route exact path="/login"
+								   component={LoginView}/>
+							<Route exact path="/register"
+								   component={RegisterView}/>
+							<AuthRoute exact path="/dashboard"
+									   component={DashboardView}/>
+							<AuthRoute exact path="/bootcamp"
+									   component={BootcampView}/>
+							<AuthRoute exact path="/contests"
+									   component={ContestsView}/>
+							<AdminRoute exact path="/admin"
+										render={() => {
+											return (
+												<Redirect to="/admin/login" />
+											);
+										}}/>
+											
+							<Route exact path="/admin/login"
+										component={AdminLogin}/>
+							<Route path="*"
+								   component={Error404View}/> 
 						</Switch>
 					</div>
 					<Footer />
