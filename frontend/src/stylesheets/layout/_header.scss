@@ -6,11 +6,14 @@
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	height: 15%;
+	height: 10%;
 	width: 100%;
 	padding: 1em;
 	background: $black1;
 	z-index: 2;
+
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16),
+				0 3px 6px rgba(0,0,0,0.23);
 
 	.k__header-branding {
 		display: flex;
@@ -18,9 +21,10 @@
 		align-items: center;
 
 		a {
-			//height: 100%;
 			color: $white1;
 			font-size: 2em;
+			font-weight: 700;
+			text-decoration: none;
 		}
 	}
 

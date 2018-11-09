@@ -1,0 +1,31 @@
+// pages/_register.scss - Login Page Styles
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+.k__register {
+	@extend %page;
+	
+	.k__auth-form {
+		background: $white1;
+		margin: 2rem auto 0;
+		overflow: hidden;
+		padding: 7rem 10px 3.2rem 10px;
+		position: relative;
+		height: 75%;
+		width: 40%;
+
+		.k__auth-header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			font-size: 1.6rem;
+			font-weight: 700;
+			text-align: center;
+			line-height: 1.25em;
+			background: $cyan1;
+			padding: 1rem;
+			margin: 0;
+		}
+	}
+}

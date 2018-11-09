@@ -6,11 +6,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-	font-family: Helvetica Neue, sans-serif
 }
 
-*::before, *::after {
+*, *::before, *::after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+html, body, #root, .container {
+	height: 100%;
 }
 
 html, body {
@@ -19,9 +24,80 @@ html, body {
 	width: 100%;
 }
 
+body {
+	line-height: 1;
+}
+
 #root {
 	position: relative;
 	height: 100%;
 	width: 100%;
 	background: #111111;
+	font-family: "Lato", helvetica, arial, clean, sans-serif;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.clear {
+	clear: both;
+}
+
+a {
+	&:hover {
+
+	}
+
+	&:visited {
+
+	}
+}
+
+a, a:hover {
+
+}
+
+p {
+
+}
+
+strong {
+
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
 }

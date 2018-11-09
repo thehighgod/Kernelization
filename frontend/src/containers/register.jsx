@@ -15,7 +15,9 @@ class RegisterView extends Component {
 	{
 		return (
 			<div className="k__register">
-				<h1>Register</h1>
+				<center>
+					<h1>Nice to have you!</h1>
+				</center>
 				<RegisterForm/>
 			</div>
 		);

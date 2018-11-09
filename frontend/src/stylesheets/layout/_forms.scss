@@ -1,0 +1,163 @@
+// ./layout/_forms.scss - Base forms.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+input, select, textarea, button {
+	font-family: Helvetica Neue, helvetica, arial, sans-serif;
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-style: normal;
+	outline: none;
+}
+
+input, select, textarea {
+	//border: ;
+}
+
+input[type=text], input[type=password], input[type=submit],
+input[type=button], select, textarea, button {
+	border-radius: 0;
+	-webkit-appearence: none;
+	appearence: none;
+}
+
+input:focus, select:focus, textarea:focus {
+	//border-color: ; 
+}
+
+input:hover, select:hover, textarea:hover {
+	//border-color: ;
+}
+
+.form-wrap, .form-row {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.form-wrap {
+	padding: 0 10px;
+	
+	.form-row {
+		margin-buttom: 2rem;
+		
+		.form-item {
+			
+			.form-input {
+				display: block;
+				position: relative;
+				width: 100%;
+				
+				input {
+					border: none;
+					color: $black3;
+					padding: 14px 3px;
+					width: 100%;
+
+					font-size: 1rem;
+					font-weight: 400;
+					font-style: normal;
+
+					&:hover + k__auth-input-border::after,
+					&:focus + k__auth-input-border::after {
+						width: 100%;
+						@include input-border(all .4s ease-in-out);
+					}
+				}
+
+				.k__auth-input-border {
+					height: 0;
+					width: 0;
+
+					&::before {
+						content: '';
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 1px;
+						background: $black2;
+						z-index: 10;
+						pointer-events: none;
+					}
+					
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						width: 100%;
+						height: 2px;
+						background: $cyan1;
+						z-index: 15;
+						pointer-events: none;
+						@include input-border(all .4s ease-in-out);
+					}
+				}
+			
+				.form-label {
+					padding-bottom: 1rem;
+				
+					label {
+						color: $black3;
+						font-size: 1.5rem;
+						font-weight: 400;
+						font-style: normal;
+					
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+}
+	
+.form-buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	margin: 3rem 0 0 0;
+	
+	.btn {
+		display: inline-flex;
+		font-size: 1.0rem;
+		line-height: normal;
+		font-weight: 400;
+		font-style: normal;
+		text-align: center;
+		border: 2px solid $black3;
+		background: $cyan1;
+		color: $white1;
+
+		padding: 0.5rem 1rem 0.5rem 1rem;
+		
+		
+		&:hover {
+			cursor: pointer;
+		}
+
+		&:disabled {
+
+		}
+	}
+
+	.btn, .btn:hover {
+
+	}
+}
+
+::-moz-placeholder {
+
+}
+
+::-ms-input-placeholder {
+
+}
+
+::-webkit-input-placeholder {
+
+}

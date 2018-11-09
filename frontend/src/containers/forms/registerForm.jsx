@@ -69,38 +69,78 @@ class RegisterForm extends Component {
 	render()
 	{
 		return (
-			<form onSubmit={this.onFormSubmit}>
-				<input type="text"
-					   label="Username"
-					   name="username"
-					   placeholder="Username"
-					   value={this.state.username}
-					   onChange={this.onFormChange}/>
-				
-				<input type="text"
-					   label="Email"
-					   name="email"
-					   placeholder="Email Address"
-					   value={this.state.email}
-					   onChange={this.onFormChange}/>
-				
-				<input type="password"
-					   label="Password"
-					   name="password1"
-					   placeholder="Enter a password"
-					   value={this.state.password1}
-					   onChange={this.onFormChange}/>
+			<div className="k__auth-form">
+				<h1 className="k__auth-header">Register</h1>
+				<form onSubmit={this.onFormSubmit}>
+					<div className="form-wrap">
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="text"
+										   label="Username"
+										   name="username"
+										   placeholder="Username"
+										   value={this.state.username}
+										   onChange={this.onFormChange}/>
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
 
-				<input type="password"
-					   label="Confirm"
-					   name="password2"
-					   placeholder="Confirm password"
-					   value={this.state.password2}
-					   onChange={this.onFormChange}/>
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="text"
+										   label="Email"
+										   name="email"
+										   placeholder="Email Address"
+										   value={this.state.email}
+										   onChange={this.onFormChange}/>
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
 				
-				<input type="submit"
-					   value="Register"/>
-			</form>
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="password"
+										   label="Password"
+										   name="password1"
+										   placeholder="Enter a password"
+										   value={this.state.password1}
+										   onChange={this.onFormChange}/>
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="password"
+										   label="Confirm"
+										   name="password2"
+										   placeholder="Confirm password"
+										   value={this.state.password2}
+										   onChange={this.onFormChange}/>
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div className="form-buttons">
+							<input className="btn"
+								   type="submit"
+								   value="Register" />
+						</div>
+					</div>
+				</form>
+			</div>
 		);
 	}
 };

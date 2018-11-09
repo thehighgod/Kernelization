@@ -1,3 +1,10 @@
 // base/_animations.scss - Base animations.
 // Copywrite (C) 2018, Brett Broadhurst
 //
+
+@mixin input-border($setting)
+{
+	-webkit-transition: $setting;
+	-moz-transition: $setting;
+	transition: $setting;
+}

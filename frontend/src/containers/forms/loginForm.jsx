@@ -61,34 +61,48 @@ class LoginForm extends Component {
 	render()
 	{
 		return (
-			<form className="k__login__form"
-				  onSubmit={this.onFormSubmit} >
-				<div className="k__login__form-header">
-					<span>Login</span>
-				</div>
+			<div className="k__auth-form">
+				<h1 className="k__auth-header">Login</h1>
+				<form onSubmit={this.onFormSubmit}>
+					<div className="form-wrap">
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="text"
+										   label="email"
+										   name="email"
+										   placeholder="Email"
+										   value={this.state.email}
+										   onChange={this.onFormChange} />
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<div className="form-row">
+							<div className="form-item">
+								<div className="form-input">
+									<input type="password"
+										   label="password"
+										   name="password"
+										   value={this.state.password}
+										   placeholder="Password"
+										   onChange={this.onFormChange} />
+									<span className="k__auth-input-border">
+									</span>
+								</div>
+							</div>
+						</div>
 
-				<div className="k__login__form-body">
-					<input type="text"
-						   label="email"
-						   name="email"
-						   placeholder="Enter your email"
-						   value={this.state.email}
-						   onChange={this.onFormChange} />
-					
-					<input type="password"
-						   label="password"
-						   name="password"
-						   value={this.state.password}
-						   placeholder="Enter your password"
-						   onChange={this.onFormChange} />
-
-					<hr />
-					<input type="submit"
-						   value="Login" />
-				</div>
-				<div className="k__login__form-footer">
-				</div>
-			</form>
+						<div className="form-buttons">
+							<input className="btn"
+								   type="submit"
+								   value="Login" />
+						</div>
+					</div>
+				</form>
+			</div>
 		);
 	}
 };

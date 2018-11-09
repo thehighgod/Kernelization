@@ -15,6 +15,9 @@ class LoginView extends Component {
 	{
 		return (
 			<div className="k__login">
+				<center>
+					<h1>Welcome back!</h1>
+				</center>
 				<LoginForm />
 			</div>
 		);
