@@ -7,19 +7,35 @@ import {Link} from "react-router-dom";
 import Navbar from "./navbar.jsx";
 
 const Header = (props) => {
-	return (
-		<div className="k__header">
-			<div className="k__header-branding">
-				<img className="k__header-branding-logo" src="#" alt="#"/>
-				<Link to="/">Kernelization</Link>
+	if (localStorage.getItem("user")) {
+		return (
+			<div className="k__header">
+				<div className="k__header-branding">
+					<img className="k__header-branding-logo" src="#" alt="#"/>
+					<Link to="/">Kernelization</Link>
+				</div>
+				
+				<Navbar isLoggedIn={true}/>
+				<div className="k__header__login">
+					<Link to="/logout"><button>Logout</button></Link>
+				</div>
 			</div>
-			
-			<Navbar isLoggedIn={false}/>
-			<div className="k__header__login">
-				<Link to="/login"><button>Login</button></Link>
+		);
+	} else {
+		return (
+			<div className="k__header">
+				<div className="k__header-branding">
+					<img className="k__header-branding-logo" src="#" alt="#"/>
+					<Link to="/">Kernelization</Link>
+				</div>
+				
+				<Navbar isLoggedIn={false}/>
+				<div className="k__header__login">
+					<Link to="/login"><button>Login</button></Link>
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
 export default Header;

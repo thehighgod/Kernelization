@@ -17,6 +17,7 @@ import Footer from "../components/footer.jsx";
 import LandingView from "./landing.jsx";
 import AboutView from "./about.jsx";
 import LoginView from "./login.jsx";
+import LogoutView from "./logout.jsx";
 import RegisterView from "./register.jsx";
 import DashboardView from "./dashboard.jsx";
 import BootcampView from "./bootcamp/bootcamp.jsx";
@@ -57,6 +58,8 @@ class Kernelization extends Component {
 								   component={AboutView}/>
 							<Route exact path="/login"
 								   component={LoginView}/>
+							<Route exact path="/logout"
+								   component={LogoutView}/>
 							<Route exact path="/register"
 								   component={RegisterView}/>
 							<AuthRoute exact path="/dashboard"

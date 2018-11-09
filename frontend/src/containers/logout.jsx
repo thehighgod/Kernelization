@@ -3,11 +3,20 @@
 //
 
 import React, {Component} from "react";
+import {connect} from "react-redux";
+import {logoutUser} from "../actions/userActions";
+
+function mapStateToProps(state)
+{
+	return state;
+}
 
 class LogoutView extends Component {
 	componentDidMount()
 	{
 		document.title = "Logout | Kernelization";
+
+		this.props.dispatch(logoutUser());
 	}
 
 	render()
@@ -21,4 +30,4 @@ class LogoutView extends Component {
 	}
 };
 
-export default LogoutView;
+export default connect(mapStateToProps)(LogoutView);
