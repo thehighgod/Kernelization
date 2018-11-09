@@ -7,3 +7,4 @@ uploads
 # File types
 .DS_Store
 *.tmp
+test.txt

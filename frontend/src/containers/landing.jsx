@@ -4,6 +4,7 @@
 
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
+import Logo from "../assets/img/kernel3.png";
 
 const LandingFeatureCard = (props) => {
 	return (
@@ -22,16 +23,28 @@ class LandingView extends Component {
 	render()
 	{
 		return (
-			<div className="landing">
-				<h1>Kernelization</h1>
-				
-				<div className="landing__greeting">
-					<h2>Making hard tech easy.</h2>
-					<Link to="/register">Join Us!</Link>
+			<div className="k__landing">
+				<div className="greeting">
+					<div className="greeting-background"></div>
+					<div className="greeting-display"></div>
+					<div className="greeting-shout">
+						<h1>Welcome to<br /> Kernelization v0.0.1</h1>
+						<h2>Making hard tech easy.</h2>
+
+						<div className="s-join">
+							<Link to="/register">Join Us!</Link>
+						</div>
+					</div>
+
+					<div className="greeting-shout2">
+						<h1>Built for you.</h1>
+					</div>
+
+					<img className="greeting-logo" src={Logo} />
 				</div>
 				
 				<div className="landing__features">
-					<LandingFeatureCard />
+					
 				</div>
 			</div>
 		);

@@ -1,0 +1,75 @@
+// pages/_bootcamp.scss - Bootcamp styles.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+.k__bootcamp {
+	
+}
+
+.k__bootcamp-list {
+	height: auto;
+	
+	.k__bootcamp-card {
+		position: relative;
+		display: flex;
+		max-width: 1000px;
+		height: 380px;
+		width: 70%;
+		overflow: hidden;
+		margin: 1em auto;
+		padding: 0;
+		background: green;
+		border-radius: 5px;
+		
+		.b-left {
+			height: 100%;
+			width: 270px;
+			background: black;
+			padding: 1em 0.5em;
+			color: $white1;
+
+			.b-info {
+				margin: 0 0 10px 0;
+			}
+
+			.b-desc {
+
+			}
+		}
+		
+		.b-right {
+			flex: 1;
+			height: 100%;
+			background: gray;
+
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+	
+	.b-title {
+		position: absolute;
+		left: 100px;
+		bottom: 80px;
+		font-weight: 700;
+		font-size: 4em;
+
+		color: $white1;
+	}
+
+	.b-subtitle {
+		position: absolute;
+		left: 100px;
+		bottom: 65px;
+		font-weight: 600;
+		font-size: 1em;
+		color: $white1;
+	}
+}
+
+
+@media screen and (max-width: 800px) { 
+
+}

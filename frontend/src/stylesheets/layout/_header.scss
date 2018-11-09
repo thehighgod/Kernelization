@@ -9,7 +9,7 @@
 	height: 10%;
 	width: 100%;
 	padding: 1em;
-	background: $black1;
+	background: $black3;
 	z-index: 2;
 
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16),
@@ -21,8 +21,9 @@
 		align-items: center;
 
 		a {
-			color: $white1;
-			font-size: 2em;
+			color: #00FFFF;
+			font-family: Helvetica Neue;
+			font-size: 1em;
 			font-weight: 700;
 			text-decoration: none;
 		}
@@ -56,6 +57,7 @@
 						position: absolute;
 						opacity: 0;
 						font-size: 1em;
+						font-weight: 600;
 						top: 0px;
 						transition: all 0.3s;
 					}
@@ -90,7 +92,7 @@
 		align-items: center;
 		justify-content: center;
 		float: right;
-		width: 10%;
+		width: 8%;
 		
 		a {
 			position: relative;
@@ -100,19 +102,18 @@
 
 			button {
 				position: relative;
-				border-radius: 10px;
-				border: 2px solid $white1;
+				border-radius: 30px;
+				border: 1px solid $white1;
 				background: transparent;
 				color: $white1;
-				padding: 0.5em;
+				padding: 0.6em;
 				font-size: 1em;
 				width: 100%;
 				z-index: 10;
 
 				&:hover {
 					cursor: pointer;
-				}
-				
+				}				
 			}
 		}
 	}

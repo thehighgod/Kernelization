@@ -12,34 +12,44 @@ function mapStateToProps(state)
 }
 
 class BootcampProgram extends Component {
+	constructor(props)
+	{
+		super(props);
+
+		this.state = {
+			
+		};
+	}
+	
 	render()
 	{
 		return (
 			<div className="k__bootcamp-card">
-				<div className="b-card-header">
-
-				</div>
-
-				<div className="b-card-body">
-					
-				</div>
-
-				<div className="b-card-footer">
-
-				</div>
 				
-				<span>{this.props.title}</span>
-				<Link to="/">
-					<img src={this.props.image} />
-				</Link>
-				<span>{this.props.status}</span>
-				<span>{this.props.instructors[0]}</span>
-				<span>{this.props.participants}</span>
-				<span>{this.props.version}</span>
-
-				<div className="bootcamp-description">
-					{this.props.description}
+				<div className="b-left">
+					<div className="b-info">
+						<p className="h-yellow">Status: {this.props.status}</p>
+						<p>Instructor(s): {this.props.instructors[0]}</p>
+						<p>Participants: {this.props.participants}</p>
+						<p>Version: {this.props.version}</p>
+					</div>
+					
+					<div className="b-desc">
+						{this.props.description}
+					</div>	
 				</div>
+					
+				<div className="b-right">
+					<img src={this.props.image} />
+				</div>
+
+				<p className="b-title">
+					{this.props.title}
+				</p>
+				
+				<p className="b-subtitle">
+					{this.props.subtitle}
+				</p>
 			</div>
 		);
 	}
@@ -54,6 +64,7 @@ class BootcampList extends Component {
 					key={idx}
 					id={bc.id}
 					title={bc.title}
+					subtitle={bc.subtitle}
 					instructors={bc.instructors}
 					image={bc.image}
 					status={bc.status}
@@ -83,31 +94,34 @@ class BootcampView extends Component {
 			{
 				id: "1",
 				title: "Cybersecurity",
-				image: "#",
-				description: "Become a l33t h4x0r!",
+				subtitle: "Become a penetration tester.",
+				image: "https://www.itgovernanceusa.com/blog/wp-content/uploads/2014/09/iStock_000019633342_Small.jpg",
+				description: "Cybersecurity affects us all. As threats become more sophisticated, the defenders need to always be in the know of all the latest attacks and exploits. Do you have what it takes to defend the safety of the internet?",
 				instructors: ["JTR"],
 				status: "Under Construction",
-				partipants: 0,
+				participants: 0,
 				version: "0.0.1",
 				link: "#"
 			},
 			{
 				id: "2",
 				title: "Artificial Intelligence",
-				image: "#",
+				subtitle: "Become an ML engineer.",
+				image: "https://images.alphacoders.com/678/thumb-1920-678786.jpg",
 				instructors: ["JTR"],
 				status: "Under Construction",
-				partipants: 0,
+				participants: 0,
 				version: "0.0.1",
 				link: "#"
 			},
 			{
 				id: "3",
 				title: "Blockchain",
-				image: "#",
+				subtitle: "Become a blockchain engineer.",
+				image: "https://lo3energy.com/wp-content/uploads/2018/05/digital-europe.jpg",
 				instructors: ["JTR"],
 				status: "Under Construction",
-				partipants: 0,
+				participants: 0,
 				version: "0.0.1",
 				link: "#"
 			},

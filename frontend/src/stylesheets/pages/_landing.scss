@@ -2,8 +2,93 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-.k__header {
-	background: none;
+.k__landing {
+	position: relative;
+}
+
+.greeting-background {
+	position: absolute;
+	height: 720px;
+	width: 100%;
+	z-index: 10;
+	//background: url("https://www.nasa.gov/specials/blackmarble/2016/globalmaps/BlackMarble_2016_01deg.jpg");
+
+	background-position: center center;
+	background-size: cover;
+	box-shadow: 0 6px 10px rgba(0,0,0,0.16),
+				0 6px 10px rgba(0,0,0,0.23);
+
+}
+
+.greeting-display {
+	position: absolute;
+	height: 720px;
+	width: 100%;
+	z-index: 15;
+	background: linear-gradient(45deg, $black1 50%, rgba(255,255,255,1) 50%);
+}
+
+.greeting-shout {
+	position: absolute;
+	top: 200px;
+	left: 0;
+	right: 0;
+	bottom: 100px;
+	
+	height: 200px;
+	width: 100%;
+	padding: 1em;
+
+	background-color: none;
+	z-index: 20;
+	
+	.s-join {
+		margin-top: 20px;
+	}
+	
+	h1, h2 {
+		
+	}
+
+	h1 {
+		font-size: 3em;
+		font-weight: 700;
+	}
+
+	h2 {
+		color: $cyan1;
+	}
+}
+
+.greeting-shout2 {
+	position: absolute;
+	top: 200px;
+	text-align: right;
+	height: 200px;
+	width: 100%;
+	padding: 1em;
+
+	background-color: none;
+	z-index: 20;
+	
+	h1, h2 {
+		color: $black3;
+	}
+
+	h1 {
+		font-size: 3em;
+		font-weight: 700;
+	}
+
+	h2 {
+		color: $cyan1;
+	}
+}
+
+.greeting-logo {
+	float: right;
+	height: 500px;
+	width: 450px;
 }
 
 h1, h2, span, a {

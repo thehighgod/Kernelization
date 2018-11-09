@@ -2,7 +2,7 @@
 // Copywrite(C) 2018, Bret Broadhurst
 //
 
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {Router, Switch, Route} from "react-router-dom";
 import {connect} from "react-redux";
 import {history} from "../utils/history";
@@ -15,6 +15,7 @@ import Footer from "../components/footer.jsx";
 
 // Views
 import LandingView from "./landing.jsx";
+import AboutView from "./about.jsx";
 import LoginView from "./login.jsx";
 import RegisterView from "./register.jsx";
 import DashboardView from "./dashboard.jsx";
@@ -46,12 +47,14 @@ class Kernelization extends Component {
 	{
 		return (
 			<Router history={history}>
-				<React.Fragment>
+				<Fragment>
 					<Header />
 					<div className="k__body">
 						<Switch>
 							<Route exact path="/"
 								   component={LandingView}/>
+							<Route exact path="/about"
+								   component={AboutView}/>
 							<Route exact path="/login"
 								   component={LoginView}/>
 							<Route exact path="/register"
@@ -76,7 +79,7 @@ class Kernelization extends Component {
 						</Switch>
 					</div>
 					<Footer />
-				</React.Fragment>
+				</Fragment>
 			</Router>
 		);
 	}

@@ -23,7 +23,8 @@
 			font-weight: 700;
 			text-align: center;
 			line-height: 1.25em;
-			background: $cyan1;
+			background: rgb(99,0,238);
+			background: linear-gradient(90deg, rgba(99,0,238,1) 35%, rgba(55,0,179,1) 100%);
 			padding: 1rem;
 			margin: 0;
 		}

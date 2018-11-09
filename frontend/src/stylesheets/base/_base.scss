@@ -16,12 +16,13 @@
 
 html, body, #root, .container {
 	height: 100%;
+	width: 100%;
 }
 
 html, body {
     position: relative;
-	height: 100%;
-	width: 100%;
+	background: #000000;
+	overflow-x: hidden;
 }
 
 body {
@@ -30,9 +31,6 @@ body {
 
 #root {
 	position: relative;
-	height: 100%;
-	width: 100%;
-	background: #111111;
 	font-family: "Lato", helvetica, arial, clean, sans-serif;
 }
 
