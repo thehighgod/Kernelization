@@ -24,6 +24,7 @@ import BootcampView from "./bootcamp/bootcamp.jsx";
 import ContestsView from "./contests.jsx";
 import AdminView from "./admin/admin.jsx";
 import AdminLogin from "./admin/adminLogin.jsx";
+import UserProfileView from "./user/userProfile.jsx";
 import Error404View from "./404.jsx";
 
 // Redux
@@ -62,6 +63,7 @@ class Kernelization extends Component {
 								   component={LogoutView}/>
 							<Route exact path="/register"
 								   component={RegisterView}/>
+							<Route path="/profile/:username" component={UserProfileView}/>
 							<AuthRoute exact path="/dashboard"
 									   component={DashboardView}/>
 							<AuthRoute exact path="/bootcamp"

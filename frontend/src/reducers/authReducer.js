@@ -1,4 +1,4 @@
-// src/reducers/authReducer.js - Authentication action reducer.
+// reducers/authReducer.js - Authentication action reducer.
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
