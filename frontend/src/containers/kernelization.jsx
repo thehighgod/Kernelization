@@ -13,19 +13,30 @@ import {AuthRoute} from "./routes/authRoute.jsx";
 import Header from "../components/header.jsx";
 import Footer from "../components/footer.jsx";
 
-// Views
+// Views //
+// Anonymous Views
 import LandingView from "./landing.jsx";
 import AboutView from "./about.jsx";
 import LoginView from "./login.jsx";
-import LogoutView from "./logout.jsx";
 import RegisterView from "./register.jsx";
+
+// User Views
 import DashboardView from "./dashboard.jsx";
+import UserProfileView from "./user/userProfile.jsx";
+import LogoutView from "./logout.jsx";
+
+// Bootcamp Views
 import BootcampView from "./bootcamp/bootcamp.jsx";
-import ContestsView from "./contests.jsx";
+import CyberBootcampView from "./bootcamp/cybersecurity.jsx";
+//import AIBootcampView from "./bootcamp/ai.jsx";
+
+// Admin Views
 import AdminView from "./admin/admin.jsx";
 import AdminLogin from "./admin/adminLogin.jsx";
-import UserProfileView from "./user/userProfile.jsx";
+
+// Error Views
 import Error404View from "./404.jsx";
+import ComingSoonView from "./comingSoon.jsx";
 
 // Redux
 function mapStateToProps(state)
@@ -53,34 +64,29 @@ class Kernelization extends Component {
 					<Header />
 					<div className="k__body">
 						<Switch>
-							<Route exact path="/"
-								   component={LandingView}/>
-							<Route exact path="/about"
-								   component={AboutView}/>
-							<Route exact path="/login"
-								   component={LoginView}/>
-							<Route exact path="/logout"
-								   component={LogoutView}/>
-							<Route exact path="/register"
-								   component={RegisterView}/>
+							<Route exact path="/" component={LandingView}/>
+							<Route path="/about" component={AboutView}/>
+							<Route path="/login" component={LoginView}/>
+							<Route path="/logout" component={LogoutView}/>
+							<Route path="/register" component={RegisterView}/>
+							
 							<Route path="/profile/:username" component={UserProfileView}/>
-							<AuthRoute exact path="/dashboard"
-									   component={DashboardView}/>
-							<AuthRoute exact path="/bootcamp"
-									   component={BootcampView}/>
-							<AuthRoute exact path="/contests"
-									   component={ContestsView}/>
-							<AdminRoute exact path="/admin"
+							<AuthRoute path="/dashboard" component={DashboardView}/>
+							
+							<AuthRoute exact path="/bootcamp" component={BootcampView}/>
+							<AuthRoute path="/bootcamp/cybersecurity" component={CyberBootcampView}/>
+							<AuthRoute path="/bootcamp/artificialintelligence" component={ComingSoonView}/>
+							<AuthRoute path="/bootcamp/blockchain" component={ComingSoonView}/>
+							
+							<AuthRoute path="/contests" component={ComingSoonView}/>
+							
+							<AdminRoute path="/admin"
 										render={() => {
-											return (
-												<Redirect to="/admin/login" />
-											);
+											return (<Redirect to="/admin/login" />);
 										}}/>
 											
-							<Route exact path="/admin/login"
-										component={AdminLogin}/>
-							<Route path="*"
-								   component={Error404View}/> 
+							<Route path="/admin/login" component={AdminLogin}/>
+							<Route path="*" component={Error404View}/> 
 						</Switch>
 					</div>
 					<Footer />

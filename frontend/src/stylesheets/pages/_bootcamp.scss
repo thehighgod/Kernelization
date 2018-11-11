@@ -3,11 +3,72 @@
 //
 
 .k__bootcamp {
-	
+	background-color: #EEEEEE;
+	padding: 1em;
+
+	h1, h3 {
+		color: $black2;
+	}
+
+	.bootcamp-shout {
+		font-weight: 400;
+		color: #252525;
+		font-size: 1.5em;
+		border-bottom: 2px solid $violet1;
+		width: 20em;
+	}
+}
+
+.b-card-red {
+	.b-left {
+		background-color: $red3;
+		border-right: 3px solid $red2;
+	}
+
+	.b-title {
+		border-bottom: 3px solid $red2;
+	}
+
+	.b-enter {
+		background-color: $red3;
+	}
+}
+
+.b-card-blue {
+	.b-left {
+		background-color: $blue3;
+		border-right: 3px solid $blue2;
+	}
+
+	.b-title {
+		border-bottom: 3px solid $blue2;
+	}
+
+	.b-enter {
+		background-color: $blue3;
+	}
+}
+
+.b-card-cyan {
+	.b-left {
+		background-color: $cyan3;
+		border-right: 3px solid $cyan2;
+	}
+
+	.b-title {
+		border-bottom: 3px solid $cyan2;
+	}
+
+	.b-enter {
+		background-color: $cyan3;
+	}
 }
 
 .k__bootcamp-list {
 	height: auto;
+	margin: 50px 0 0 0;
+
+	font-family: Roboto, sans-serif;
 	
 	.k__bootcamp-card {
 		position: relative;
@@ -16,24 +77,29 @@
 		height: 380px;
 		width: 70%;
 		overflow: hidden;
-		margin: 1em auto;
+		margin: 75px auto;
 		padding: 0;
-		background: green;
-		border-radius: 5px;
+		border-radius: 1px;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16),
+				0 3px 6px rgba(0,0,0,0.23);
 		
 		.b-left {
 			height: 100%;
 			width: 270px;
-			background: black;
 			padding: 1em 0.5em;
 			color: $white1;
 
 			.b-info {
 				margin: 0 0 10px 0;
+
+				p {
+					margin: 1em;
+				}
 			}
 
 			.b-desc {
-
+				font-size: 0.7em;
+				text-justify: inner-word;
 			}
 		}
 		
@@ -46,26 +112,60 @@
 				height: 100%;
 				width: 100%;
 			}
+
+			.b-tint {
+				position: absolute;
+				top: 0;
+				right: 0;
+				
+				height: 100%;
+				width: calc(100% - 270px);
+
+				background: rgba(0,0,0,0.5);
+				z-index: 15;
+			}
+
+			.b-enter {
+				position: absolute;
+				bottom: 25px;
+				right: 25px;
+				border: none;
+				border-radius: 30px;
+				color: $white1;
+				font-size: 0.8em;
+				padding: 0.5em 1em 0.5em 1em;
+				z-index: 20;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
 		}
+	}
+
+	.b-title, .b-subtitle {
+		font-family: "Lato", sans-serif;
 	}
 	
 	.b-title {
 		position: absolute;
 		left: 100px;
-		bottom: 80px;
+		bottom: 50px;
 		font-weight: 700;
 		font-size: 4em;
 
 		color: $white1;
+		z-index: 25;
 	}
 
 	.b-subtitle {
 		position: absolute;
 		left: 100px;
-		bottom: 65px;
+		bottom: 25px;
 		font-weight: 600;
 		font-size: 1em;
 		color: $white1;
+		z-index: 25;
 	}
 }
 

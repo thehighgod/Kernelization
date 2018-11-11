@@ -23,7 +23,8 @@ class DashboardView extends Component {
 	{
 		return (
 			<div className="k__dashboard">
-				<h1>Dashboard</h1>
+				<center><h1>Dashboard</h1></center>
+				<center><h3>This page is under construction.</h3></center>
 			</div>
 		);
 	}
