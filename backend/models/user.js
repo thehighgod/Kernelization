@@ -38,8 +38,57 @@ const userSchema = Schema({
 		type: Boolean,
 		default: false,
 		required: true
-	}
+	},
 
+	firstName:  {
+		type: String,
+		required: false
+	},
+
+	lastName: {
+		type: String,
+		required: false
+	},
+
+	status: {
+		type: String,
+		required: false
+	},
+
+	avatar: {
+		type: String,
+		default: "",
+		required: false
+	},
+
+	bio: {
+		type: String,
+		required: false
+	},
+
+	level: {
+		type: Number,
+		default: 1,
+		required: true
+	},
+
+	xp: {
+		type: Number,
+		default: 0,
+		required: true
+	},
+
+	rep: {
+		type: Number,
+		default: 0,
+		required: true,
+	},
+
+	joined: {
+		type: Date,
+		default: Date.now(),
+		required: true
+	}
 });
 
 module.exports = mongoose.model("User", userSchema);

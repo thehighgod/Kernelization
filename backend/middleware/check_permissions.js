@@ -1,5 +1,5 @@
 // middleware/check_permissions.js - Middleware for checking permissions. 
-//
+// Copywrite (C) 2018, Brett Broadhurst
 //
 
 const jwt = require("jsonwebtoken");

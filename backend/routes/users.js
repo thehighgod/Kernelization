@@ -12,18 +12,25 @@ const checkAdmin = require("../middleware/check_permissions");
 router.get("/", checkAuth, checkAdmin, userController.getUsers);
 
 // Register Route
-router.post("/register", userController.registerUser);
+router.post("/register",
+			userController.registerUser);
 
 // Login Route
-router.post("/login", userController.loginUser);
+router.post("/login",
+			userController.loginUser);
 
 // Specific user GET
-router.get("/:userId", userController.getUser);
+router.get("/:userId",
+		   userController.getUser);
 
 // Specific user PUT
-router.put("/:userId", checkAuth, checkAdmin, userController.editUser);
+router.put("/:userId",
+		   checkAuth, checkAdmin,
+		   userController.editUser);
 
 // Specific user DELETE
-router.delete("/:userId", checkAuth, checkAdmin, userController.deleteUser);
+router.delete("/:userId",
+			  checkAuth, checkAdmin,
+			  userController.deleteUser);
 
 module.exports = router
