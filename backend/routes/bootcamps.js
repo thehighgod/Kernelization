@@ -6,8 +6,8 @@ const express = require("express");
 const router = express.Router();
 
 // Middleware
-const checkAuth = required("../middleware/check_auth");
-const checkAdmin = required("../middleware/check_permissions");
+const checkAuth = require("../middleware/check_auth");
+const checkAdmin = require("../middleware/check_permissions");
 const checkEnrolled = require("../middleware/check_enrolled");
 
 // Model controller
@@ -15,37 +15,37 @@ const bootcampController = require("../controllers/bootcamps");
 
 // All Bootcamps GET
 router.get("/",
-		   checkAuth, checkAdmin
+		   checkAuth, checkAdmin,
 		   bootcampController.getBootcampsAll);
 
 // Add a new Bootcamp
 router.post("/",
-			checkAuth, checkAdmin
+			checkAuth, checkAdmin,
 			bootcampController.addBootcamp);
 
 // Get a bootcamp
 router.get("/:bootcampId",
-		   checkAuth, checkAdmin
+		   checkAuth, checkAdmin,
 		   bootcampController.getBootcamp);
 
 // Update a bootcamp
 router.patch("/:bootcampId",
-			 checkAuth, checkAdmin
+			 checkAuth, checkAdmin,
 			 bootcampController.updateBootcamp);
 
 // Delete a bootcamp
 router.delete("/:bootcampId",
-			  checkAuth, checkAdmin
+			  checkAuth, checkAdmin,
 			  bootcampController.deleteBootcamp);
 
 // Get all lessons from a bootcamp with an ID.
 router.get("/:bootcampId/lessons/",
-		   checkAuth, checkAdmin
+		   checkAuth, checkAdmin,
 		   bootcampController.getLessonsAll);
 
 // Add a lesson to a bootcamp with an ID.
 router.post("/:bootcampId/lessons/",
-			checkAuth, checkAdmin
+			checkAuth, checkAdmin,
 		   bootcampController.addLesson);
 
 // Get a lesson with an ID from a bootcamp.

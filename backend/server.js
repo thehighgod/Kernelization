@@ -2,16 +2,17 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-const express    = require('express');
-const bodyParser = require('body-parser');
-const fs         = require('fs');
-const path       = require('path');
-const mongoose   = require('mongoose');
-const morgan     = require('morgan');
+const express    = require("express");
+const bodyParser = require("body-parser");
+const fs         = require("fs");
+const path       = require("path");
+const mongoose   = require("mongoose");
+const morgan     = require("morgan");
 
 // Routes
-const boxRoutes  = require('./routes/box');
-const userRoutes = require('./routes/users');
+const bootcampRoutes = require("./routes/bootcamps");
+const boxRoutes  = require("./routes/box");
+const userRoutes = require("./routes/users");
 
 const app        = express();
 
@@ -55,8 +56,9 @@ app.get('/api/v1/', function(req, res, next) {
     res.end();
 });
 
-app.use('/api/v1/boxes/', boxRoutes);
-app.use('/api/v1/users/', userRoutes);
+app.use("/api/v1/bootcamps/", bootcampRoutes);
+app.use("/api/v1/boxes/", boxRoutes);
+app.use("/api/v1/users/", userRoutes);
 
 // Error handling.
 app.use(function(req, res, next) {

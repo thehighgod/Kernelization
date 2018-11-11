@@ -195,3 +195,13 @@ exports.loginUser = function(req, res, next)
 			});
 		});
 };
+
+exports.getProfile = function(req, res, next)
+{
+	
+}
+
+exports.updateProfile = function(req, res, next)
+{
+
+}

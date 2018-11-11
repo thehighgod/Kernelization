@@ -2,14 +2,16 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-const express  = require("express");
-const router   = express.Router();
+const express        = require("express");
+const router         = express.Router();
 const userController = require("../controllers/users");
-const checkAuth = require("../middleware/check_auth");
-const checkAdmin = require("../middleware/check_permissions");
+const checkAuth      = require("../middleware/check_auth");
+const checkAdmin     = require("../middleware/check_permissions");
 
 // All users GET
-router.get("/", checkAuth, checkAdmin, userController.getUsers);
+router.get("/",
+		   checkAuth, checkAdmin,
+		   userController.getUsers);
 
 // Register Route
 router.post("/register",
@@ -33,4 +35,13 @@ router.delete("/:userId",
 			  checkAuth, checkAdmin,
 			  userController.deleteUser);
 
-module.exports = router
+// Get a User profile.
+router.get("/:userId/profile",
+		   userController.getProfile);
+
+// Edit a User profile.
+router.patch("/:userId/profile",
+			 checkAuth,
+			 userController.updateProfile);
+
+module.exports = router;

@@ -23,4 +23,4 @@ module.exports = function(req, res, next)
 			message: "You do not have permission to access this."
 		});
 	}
-}
+};

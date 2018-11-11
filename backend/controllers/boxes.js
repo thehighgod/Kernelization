@@ -32,7 +32,7 @@ exports.getBoxesAll = function(req, res, next)
 				})
 			};
 			
-			res.status(200).json(docs);
+			res.status(200).json(response);
 		})
 		.catch(err => {
 			console.log(err);

@@ -4,6 +4,7 @@
 
 const mongoose = require("mongoose");
 const Bootcamp = require("../models/bootcamp");
+const User     = require("../models/user");
 
 // This middleware checks if the user who sent the request
 // to the server is enrolled in the bootcamp which the
@@ -11,9 +12,20 @@ const Bootcamp = require("../models/bootcamp");
 module.exports = function(req, res, next)
 {
 	try {
+		const user = req.userData; 
 		const btitle = req.params.bootcampId;
 
-		
+		User.find()
+			.select("name enrolled")
+			.exec()
+			.then(docs => {
+				
+			})
+			.catch(err => {
+				res.status(500).json({
+					error: err
+				});
+			});
 		
 		next();
 		

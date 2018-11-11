@@ -34,6 +34,8 @@ const userSchema = Schema({
 		required: true
 	},
 
+	enrolled: [String],
+
 	isAdmin: {
 		type: Boolean,
 		default: false,

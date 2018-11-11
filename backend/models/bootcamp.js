@@ -54,7 +54,8 @@ const bootcampSchema = Schema({
 
 	description: {
 		type: String,
-	}
+		required: true
+	},
 
 	bootcampImage: {
 		type: String,
@@ -63,7 +64,11 @@ const bootcampSchema = Schema({
 
 	lessons: [lessonSchema],
 
-	participants: [userSchema]
+	participants: [{
+		type: Schema.Types.ObjectId,
+		ref: "User",
+		required: true
+	}]
 });
 
 module.exports = mongoose.model("Bootcamp", bootcampSchema);
