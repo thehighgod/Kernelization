@@ -5,6 +5,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import client from "../../utils/client";
 
 function mapStateToProps(state)
 {
@@ -13,37 +14,42 @@ function mapStateToProps(state)
 	};
 }
 
+// User Profile Page Container
 class UserProfileView extends Component {
 	constructor(props)
 	{
 		super(props);
 		
 		this.state = {
-			user: null
+			user: {}
 		};
 	}
 
-	componentDidMount()
+	componentWillMount()
 	{
 		const {username} = this.props.match.params;
-
-		document.title = `${username} | Kernelization`;
+		
+		client.getUser(username, res => {
+			this.setState({user: res.user});
+			document.title = `${res.user.username} | Kernelization`;
+			this.forceUpdate();
+		});
 	}
 	
 	render()
 	{
-		if (!this.state.user) {
+		if (this.state.user == {}) {
 			return (
 				<h1>User Not Found</h1>
 			);
 		} else {
 			return (
 				<div className="k__profile">
-					<h1>{this.state.user}</h1>
+					<h1>{this.state.user.username}</h1>
 				</div>
 			);
 		}
 	}
 };
 
-export default connect(mapStateToProps)(UserProfileView);
+export default UserProfileView;

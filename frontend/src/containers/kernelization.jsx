@@ -74,7 +74,7 @@ class Kernelization extends Component {
 							<AuthRoute path="/dashboard" component={DashboardView}/>
 							
 							<AuthRoute exact path="/bootcamp" component={BootcampView}/>
-							<AuthRoute path="/bootcamp/cybersecurity" component={CyberBootcampView}/>
+							<AuthRoute path="/bootcamp/cybersecurity" component={ComingSoonView}/>
 							<AuthRoute path="/bootcamp/artificialintelligence" component={ComingSoonView}/>
 							<AuthRoute path="/bootcamp/blockchain" component={ComingSoonView}/>
 							

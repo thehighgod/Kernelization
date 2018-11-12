@@ -2,7 +2,9 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-const API_ROOT = "/api/v1";
+const API_LINK = "http://crevolute.com";
+const API_VERSION = "/api/v1";
+const API_ROOT = `${API_VERSION}`;
 
 // Send a POST request asking to authenticate
 // a registered user.
@@ -56,6 +58,17 @@ function getUsers(success)
 	}).then(checkStatus)
 		.then(parseJSON)
 		.then(success);
+}
+
+function getUser(userId, success)
+{
+	return fetch(`${API_ROOT}/users/${userId}`, {
+		headers: {
+			Accept: "application/json"
+		}
+	}).then(checkStatus)
+	  .then(parseJSON)
+	  .then(success);
 }
 
 // Return list of boxes from the API.
@@ -115,5 +128,6 @@ module.exports = {
 	login: loginUser,
 	logout: logoutUser,
 	register: registerUser,
-	getUsers: getUsers
+	getUsers: getUsers,
+	getUser: getUser
 };

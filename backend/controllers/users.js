@@ -7,6 +7,10 @@ const jwt      = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User     = require('../models/user');
 
+const API_VERSION = "v1";
+const API_LINK = `https://localhost:3000/api/${API_VERSION}`;
+const API_MODEL = "users";
+
 // Return all registered users.
 exports.getUsers = function(req, res, next)
 {	
@@ -25,7 +29,7 @@ exports.getUsers = function(req, res, next)
 						_id: user._id,
 						request: {
 							type: "GET",
-							url: "http://localhost:3000/api/vi/users/"
+							url: `${API_LINK}/${API_MODEL}/`
 							   + user._id
 						}
 					};
@@ -58,7 +62,7 @@ exports.getUser = function(req, res, next)
 					user: user,
 					request: {
 						type: "GET",
-						url: "http://localhost:3000/api/v1/boxes/"
+						url: `${API_LINK}/${API_MODEL}/`
 						   + user._id
 					}
 				});

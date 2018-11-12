@@ -7,7 +7,7 @@ import {types} from "../constants/actionTypes";
 import client from "../utils/client";
 
 // User login action creator.
-function loginUser(email, password)
+export function loginUser(email, password)
 {
 	return dispatch => {
 		dispatch(request({email}));
@@ -42,7 +42,7 @@ function loginUser(email, password)
 }
 
 // User register action creator.
-function registerUser(email, username, password)
+export function registerUser(email, username, password)
 {
 	return dispatch => {
 		dispatch(request({email}));
@@ -78,7 +78,7 @@ function registerUser(email, username, password)
 }
 
 // User logout action creator.
-function logoutUser()
+export function logoutUser()
 {
 	client.logout();
 
@@ -87,18 +87,18 @@ function logoutUser()
 	};
 }
 
+// Get all users from the server.
 export function getAllUsers()
 {
-
-}
-
-export function setUser(user)
-{
-	return {
-		type: "SET_USER",
-		payload: user
+	return dispatch => {
+		
 	};
 }
 
-export {loginUser, registerUser, logoutUser};
-
+// GET user profile from the server.
+export function getUserProfile()
+{
+	return dispatch => {
+		
+	};	
+}

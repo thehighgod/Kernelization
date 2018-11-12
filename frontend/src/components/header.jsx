@@ -6,13 +6,17 @@ import React from "react";
 import {Link} from "react-router-dom";
 import Navbar from "./navbar.jsx";
 
+import logo from "../assets/img/logo.png";
+
 const Header = (props) => {
 	if (localStorage.getItem("user")) {
 		return (
 			<div className="k__header">
 				<div className="k__header-branding">
-					<img className="k__header-branding-logo" src="#" alt="#"/>
-					<Link to="/">Kernelization</Link>
+					<Link to="/">
+						<img className="k__header-branding-logo"
+							 src={logo} alt="#"/>
+					</Link>
 				</div>
 				
 				<Navbar isLoggedIn={true}/>
@@ -25,8 +29,10 @@ const Header = (props) => {
 		return (
 			<div className="k__header">
 				<div className="k__header-branding">
-					<img className="k__header-branding-logo" src="#" alt="#"/>
-					<Link to="/">Kernelization</Link>
+					<Link to="/">
+						<img className="k__header-branding-logo"
+							 src={logo} alt="#"/>
+					</Link>
 				</div>
 				
 				<Navbar isLoggedIn={false}/>

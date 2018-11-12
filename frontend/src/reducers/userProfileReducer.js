@@ -9,8 +9,10 @@ const initialState = null;
 export function userProfileReducer(state = initialState, action)
 {
 	switch (action.type) {
-		case types.SET_USER:
-			return action.payload;
+		case types.USER_PROFILE_GET:
+			return {
+				...action.payload[0].profile
+			};
 
 		default:
 			return state;
