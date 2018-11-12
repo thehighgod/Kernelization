@@ -2,22 +2,36 @@
 // Copywrite (C) 2018, Brett Broadhurst
 //
 
-const webpack             = require("webpack");
-const ExtractTextPlugin   = require("extract-text-webpack-plugin");
-const ManifestPlugin      = require("webpack-manifest-plugin");
-const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin");
-const cssnext             = require("postcss-cssnext");
-const postcssFocus        = require("postcss-focus");
-const postcssReporter     = require("postcss-reporter");
-const cssnano             = require("cssnano");
+"use strict";
+
+const webpack              = require("webpack");
+const path                 = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin       = require("uglifyjs-webpack-plugin");
+const ManifestPlugin       = require("webpack-manifest-plugin");
+const ChunkManifestPlugin  = require("chunk-manifest-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 // Production Settings
 module.exports = {
+	mode: "production",
+
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				cache: true,
+				parallel: true,
+				sourceMap: true
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		]
+	},
+	
 	devtool: "hidden-source-map",
 
 	entry: {
 		app: [
-			"./frontend/index.js",
+			"./frontend/src/index.js",
 		],
 		vendor: [
 			"react",
@@ -42,52 +56,45 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.s?css$/,
-				exclude: /node_modules/,
-				use: ExtractTextPlugin.extract({
-					fallback: "style-loader",
-					use: [
-						{
-							loader: "css-loader",
-							options: {
-								localIdentName: "[hash:base64]",
-								modules: true,
-								importLoaders: 1,
-							}
-						},
-						{
-							loader: "postcss-loader",
-							options: {
-								plugins: () => {
-									postcssFocus(),
-									
-									cssnext({
-										browsers: ["last 2 versions", "IE > 10"]
-									}),
-									
-									cssnano({
-										autoprefixer: false
-									}),
-									
-									postcssReporter({
-										clearMessages: true
-									})
-								}
-							}
+				test: /\.(js|jsx)?$/,
+				include: path.join(__dirname, "frontend", "src"),
+				use: [
+					{
+						loader: "babel-loader",
+						query: {
+							compact: true
 						}
-					]
-				})
+					}
+				]
 			},
 			{
-				test: /\.css$/,
-				include: /node_modules/,
-				use: ["style-loader", "css-loader"]
+				test: /\.s?css$/,
+				include: path.join(__dirname, "frontend", "src", "stylesheets"),
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: require.resolve("css-loader"),
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: require.resolve("sass-loader"),
+						options: {
+							modules: true,
+							sourceMap: true
+						}
+					},
+				]
 			},
-			{
-				test: /\.jsx*$/,
-				include: /node_modules/,
-				use: ["style-loader", "css-loader"]
-			},
+            {
+                test: /\.css$/,
+                include: /node_modules/,
+                use: [
+                    require.resolve('style-loader'),
+                    require.resolve('css-loader')
+                ],
+            },
 			{
 				test: /\.(jpe?g|gif|png|svg)$/i,
 				use: [
@@ -108,15 +115,10 @@ module.exports = {
 				"NODE_ENV": JSON.stringify("production"),
 			}
 		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: "vendor",
-			minChunks: Infinity,
-			filename: "vendor.js"
-		}),
 
-		new ExtractTextPlugin({
+		new MiniCssExtractPlugin({
 			filename: "k.[contenthash].css",
-			allChunks: true
+			chunkFilename: "[id].scss"
 		}),
 
 		new ManifestPlugin({
@@ -127,7 +129,5 @@ module.exports = {
 			filename: "chunk-manifest.json",
 			manifestVariable: "webpackManifest"
 		}),
-
-		new webpack.optimize.UglifyJsPlugin(),
 	]
 };
