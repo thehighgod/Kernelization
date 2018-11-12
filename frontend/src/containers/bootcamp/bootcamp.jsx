@@ -60,6 +60,16 @@ class BootcampProgram extends Component {
 };
 
 class BootcampList extends Component {
+	componentDidMount()
+	{
+
+	}
+
+	componentWillUnmount()
+	{
+
+	}
+	
 	render()
 	{
 		const bootcamps = this.props.data.map((bc, idx) => {

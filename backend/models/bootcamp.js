@@ -30,8 +30,7 @@ const lessonSchema = Schema({
 	xp: {
 		type: Number,
 		required: true
-	}
-	
+	}	
 });
 
 // Bootcamp schema consists of a bootcamp id,
@@ -52,6 +51,11 @@ const bootcampSchema = Schema({
 		required: true
 	},
 
+	subtitle: {
+		type: String,
+		required: true
+	},
+
 	description: {
 		type: String,
 		required: true
@@ -60,6 +64,20 @@ const bootcampSchema = Schema({
 	bootcampImage: {
 		type: String,
 		required: true
+	},
+
+	status: {
+		type: String,
+		default: "Under Construction",
+		required: true
+	},
+
+	sstyle: {
+		type: String,
+	},
+
+	cstyle: {
+		type: String
 	},
 
 	lessons: [lessonSchema],

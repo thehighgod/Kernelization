@@ -5,11 +5,15 @@
 const mongoose = require("mongoose");
 const Bootcamp = require("../models/bootcamp");
 
+const API_VERSION = "v1";
+const API_LINK = `https://localhost:3000/api/${API_VERSION}`;
+const API_MODEL = "bootcamps";
+
 // Return all bootcamps.
 exports.getBootcampsAll = function(req, res, next)
 {
 	Bootcamp.find()
-			.select("title instructor description bootcampImage lessons participants _id")
+			.select("title subtitle instructor description status sstyle cstyle bootcampImage lessons participants _id")
 			.exec()
 			.then(docs => {
 				const response = {
@@ -17,15 +21,19 @@ exports.getBootcampsAll = function(req, res, next)
 					bootcamps: docs.map(bc => {
 						return {
 							title: bc.title,
+							subtitle: bc.subtitle,
 							instructor: bc.instructor,
 							description: bc.description,
 							bootcampImage: bc.bootcampImage,
+							status: bc.status,
+							sstyle: bc.sstyle,
+							cstyle: bc.cstyle,
 							lessons: bc.lessons.length,
 							participants: bc.participants.length,
 							_id: bc._id,
 							request: {
 								type: "GET",
-								url: "http://localhost:3000/api/v1/bootcamps/" + bc._id
+								url: `${API_LINK}/${API_MODEL}/` + bc._id
 							}
 						}
 					})
@@ -47,6 +55,7 @@ exports.addBootcamp = function(req, res, next)
 	const bootcamp = new Bootcamp({
 		_id: new mongoose.Types.ObjectId(),
 		title: req.body.title,
+		subtitle: req.body.subtitle,
 		instructor: req.body.instructor,
 		description: req.body.description,
 		bootcampImage: req.body.bootcampImage,
@@ -81,41 +90,151 @@ exports.addBootcamp = function(req, res, next)
 // Get a bootcamp with an ID.
 exports.getBootcamp = function(req, res, next)
 {
-	return res.status(200).json({
-		
-	});
+	const id = req.params.bootcampId;
+
+	Bootcamp.findById(id)
+			.select("title instructor description lessons participants _id")
+			.exec()
+			.then(doc => {
+				console.log(doc);
+
+				if (doc) {
+					res.status(200).json({
+						bootcamp: doc,
+						request: {
+							type: "GET",
+							url: `${API_LINK}/${API_MODEL}/` + doc._id
+						}
+					});
+				} else {
+					res.status(404).json({
+						message: "No entry found for provided ID."
+					});
+				}
+			})
+			.catch(err => {
+				console.log(err);
+				res.status(500).json({
+					error: err
+				});
+			})
+
 }
 
 // Update a bootcamp with an ID.
 exports.updateBootcamp = function(req, res, next)
 {
-	return res.status(200).json({
-		
-	});
+	const id = req.params.bootcampId;
+	const updateOps = {};
+
+	// Only execute the update operations provided
+	// and no more.
+	for (const ops of req.body) {
+		updateOps[ops.propName] = ops.value;
+	}
+
+	Bootcamp.update({_id: id}, {$set: updateOps})
+			.exec()
+			.then(result => {
+				res.status(200).json({
+					message: "Bootcamp updated!",
+					request: {
+						type: "GET",
+						url: `${API_LINK}/${API_MODEL}/` + id
+					}
+				});
+			})
+			.catch(err => {
+				res.status(500).json({
+					error: err
+				});
+			});
 }
 
 // Delete a bootcamp with an ID.
 exports.deleteBootcamp = function(req, res, next)
 {
-	return res.status(200).json({
-		
-	});
+	const id = req.params.bootcampId;
+
+	Bootcamp.remove({_id: id})
+			.exec()
+			.then(result => {
+				res.status(200).json({
+					message: "Bootcamp deleted.",
+					request: {
+						type: "POST",
+						url: `${API_LINK}/${API_MODEL}/`,
+						body: {}
+					}
+				});
+			})
+			.catch(err => {
+				res.status(500).json({
+					error: err
+				});
+			});
 }
 
 // Lessons //
 
+
+// Return all lessons in a bootcamp.
 exports.getLessonsAll = function(req, res, next)
 {
-	return res.status(200).json({
-		
-	});
+	const bootcampID = req.params.bootcampId;
+
+	// Use bootcamp ID to display all lessons for that
+	// bootcamp in the database.
+	Bootcamp.findById(bootcampID)
+			.select("lessons")
+			.exec()
+			.then(docs => {
+				const response = {
+					count: docs.lessons.length,
+					lessons: docs.lessons.map(lesson => {
+						return {
+							name: lesson.name,
+							content: lesson.content,
+							flag: lesson.flag,
+							xp: lesson.xp,
+							_id: lesson._id
+						};
+					}),
+					request: {
+						type: "POST",
+						url: `${API_LINK}/${API_MODEL}/`,
+						body: {
+							"title": "[string]",
+							"subtitle": "[string]",
+							"instructor": "[userID]",
+							"description": "[string]",
+							"bootcampImage": "[string]"
+						}
+					}
+				};
+			})
+			.catch(err => {
+				res.status(500).json({
+					error: err
+				});
+			});
 }
 
+// Get a lesson by ID from a bootcmap with an ID.
 exports.getLesson = function(req, res, next)
 {
-	return res.status(200).json({
-		
-	});
+	const bootcampID = req.params.bootcampId;
+	const lessonID = req.params.lessonId;
+
+	Bootcamp.findById(bootcampId)
+			.select()
+			.exec()
+			.then()
+			.catch(err => {
+				res.status(500).json({
+					error: err
+				})
+			});
 }
 
 exports.addLesson = function(req, res, next)

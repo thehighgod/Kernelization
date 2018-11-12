@@ -39,12 +39,12 @@ router.delete("/:bootcampId",
 			  bootcampController.deleteBootcamp);
 
 // Get all lessons from a bootcamp with an ID.
-router.get("/:bootcampId/lessons/",
+router.get("/:bootcampId/lessons",
 		   checkAuth, checkAdmin,
 		   bootcampController.getLessonsAll);
 
 // Add a lesson to a bootcamp with an ID.
-router.post("/:bootcampId/lessons/",
+router.post("/:bootcampId/lessons",
 			checkAuth, checkAdmin,
 		   bootcampController.addLesson);
 
