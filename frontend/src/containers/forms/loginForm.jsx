@@ -4,6 +4,7 @@
 
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 import {loginUser, logoutUser} from "../../actions/userActions";
 
 function mapStateToProps(state)
@@ -102,6 +103,8 @@ class LoginForm extends Component {
 						</div>
 					</div>
 				</form>
+				
+				<Link to="/register">Don't have an account?</Link>
 			</div>
 		);
 	}

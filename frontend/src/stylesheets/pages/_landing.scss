@@ -43,7 +43,9 @@
 	z-index: 20;
 	
 	.s-join {
+		position: relative;
 		margin-top: 20px;
+		z-index: 500;
 	}
 	
 	h1, h2 {
@@ -63,9 +65,10 @@
 .greeting-shout2 {
 	position: absolute;
 	top: 200px;
+	right: 10px;
 	text-align: right;
 	height: 200px;
-	width: 100%;
+	width: 50%;
 	padding: 1em;
 
 	background-color: none;

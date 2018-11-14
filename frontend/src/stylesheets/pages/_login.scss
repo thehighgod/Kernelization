@@ -4,6 +4,11 @@
 
 .k__login {
 	@extend %page;
+
+	a {
+		color: black;
+		font-size: 0.8em;
+	}
 	
 	.k__auth-form {
 		background: $white1;
