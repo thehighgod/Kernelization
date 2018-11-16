@@ -1,0 +1,33 @@
+// pages/_about.scss - About page
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+.k__about {
+	@include size(100%, 75%);
+	margin: auto;
+	
+	h1, p {
+		color: $white1;
+		text-align: center;
+	}
+
+	h1 {
+
+	}
+
+	p {
+
+	}
+
+	.about__info {
+		@include size(100%, 50%);
+		margin: auto;
+		
+		padding: $default-size;
+
+		p {
+			word-wrap: break-word;
+			margin-bottom: 1em;
+		}
+	}
+}

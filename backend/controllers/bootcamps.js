@@ -176,8 +176,6 @@ exports.deleteBootcamp = function(req, res, next)
 }
 
 // Lessons //
-
-
 // Return all lessons in a bootcamp.
 exports.getLessonsAll = function(req, res, next)
 {
@@ -211,6 +209,8 @@ exports.getLessonsAll = function(req, res, next)
 							"bootcampImage": "[string]"
 						}
 					}
+
+					res.status(200).json(response);
 				};
 			})
 			.catch(err => {
@@ -227,9 +227,15 @@ exports.getLesson = function(req, res, next)
 	const lessonID = req.params.lessonId;
 
 	Bootcamp.findById(bootcampId)
-			.select()
+			.select("lesson")
 			.exec()
-			.then()
+			.then(result => {
+				const response = {
+
+				};
+				
+				res.status(200).json(response);
+			})
 			.catch(err => {
 				res.status(500).json({
 					error: err
@@ -237,23 +243,41 @@ exports.getLesson = function(req, res, next)
 			});
 }
 
+// Add a new lesson to a bootcamp with an ID.
 exports.addLesson = function(req, res, next)
 {
-	return res.status(200).json({
-		
+	const lesson = new Lesson({
+		_id: new mongoose.Types.ObjectId(),
+		name: req.body.name,
+		content: req.body.content,
+		flag: req.body.flag,
+		xp: req.body.xp,
 	});
+
+	// Save a subdocument inside a bootcamp.
 }
 
+
+// Update a lesson with an ID in a bootcamp with an ID.
 exports.updateLesson = function(req, res, next)
 {
 	return res.status(200).json({
-		
+		message: "Under construction."
 	});
 }
 
+// Remove a lesson with an ID from a bootcamp with an ID.
 exports.removeLesson = function(req, res, next)
 {
 	return res.status(200).json({
-		
+		message: "Under construction."
 	});
+}
+
+// Submissions //
+exports.submit = function(req, res, next)
+{
+	const bootcampID = req.params.bootcampId;
+	const lessonID = req.params.lessonId;
+
 }

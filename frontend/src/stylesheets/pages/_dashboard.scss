@@ -3,7 +3,27 @@
 //
 
 .k__dashboard {
+	@include size(900px, 100%);
+	
 	h1, h3 {
 		color: $white1;
+	}
+
+	p {
+		color: $white1;
+		text-align: center;
+	}
+
+	.dash-header {
+		width: 100%;
+		text-align: center;
+	}
+
+	.dash-body {
+		margin-top: $default-size;
+	}
+
+	.dash-side {
+		background-color: $white1;
 	}
 }

@@ -23,17 +23,17 @@ router.post("/",
 			checkAuth, checkAdmin,
 			bootcampController.addBootcamp);
 
-// Get a bootcamp
+// Get a bootcamp with an ID.
 router.get("/:bootcampId",
 		   checkAuth, checkAdmin,
 		   bootcampController.getBootcamp);
 
-// Update a bootcamp
+// Update a bootcamp with an ID.
 router.patch("/:bootcampId",
 			 checkAuth, checkAdmin,
 			 bootcampController.updateBootcamp);
 
-// Delete a bootcamp
+// Delete a bootcamp with an ID.
 router.delete("/:bootcampId",
 			  checkAuth, checkAdmin,
 			  bootcampController.deleteBootcamp);
@@ -62,5 +62,10 @@ router.patch("/:bootcampId/lessons/:lessonId",
 router.delete("/:bootcampId/lessons/:lessonId",
 			  checkAuth, checkAdmin,
 			  bootcampController.removeLesson);
+
+// Submit your work.
+router.post("/:bootcampId/lessons/:lessonId/submission",
+			checkAuth,
+			bootcampController.submit);
 
 module.exports = router;

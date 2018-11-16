@@ -9,7 +9,11 @@ class AboutView extends Component {
 	{
 		return (
 			<div className="k__about">
-				<h1>About</h1>
+				<h1>We are Kernelization!</h1>
+				<div className="about__info">
+					<p>We are a growing community of hackers, programmers, engineers, tinkerers strongly focussed on eachother's growth. We love technology and are overjoyed to answer any questions of newcomers!</p>
+					<p>Bi weekly competitions coming soon!</p>
+				</div>
 			</div>
 		);
 	}
