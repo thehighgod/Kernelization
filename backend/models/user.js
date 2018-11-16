@@ -54,6 +54,7 @@ const userSchema = Schema({
 
 	status: {
 		type: String,
+		default: "Tell us what you're up to!",
 		required: false
 	},
 
@@ -65,6 +66,7 @@ const userSchema = Schema({
 
 	bio: {
 		type: String,
+		default: "New to Kernelization!",
 		required: false
 	},
 

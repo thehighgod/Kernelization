@@ -15,7 +15,7 @@ const API_MODEL = "users";
 exports.getUsers = function(req, res, next)
 {	
 	User.find()
-		.select("username email role isAdmin _id")
+		.select("username email role isAdmin avatar bio status firstName lastName level xp rep joined _id")
 		.exec()
 		.then(users => {
 			const response = {
@@ -23,9 +23,18 @@ exports.getUsers = function(req, res, next)
 				users: users.map(user => {
 					return {
 						username: user.username,
+						firstName: user.firstName,
+						lastName: user.lastName,
 						email: user.email,
+						level: user.level,
+						xp: user.xp,
+						rep: user.rep,
+						avatar: user.avatar,
 						role: user.role,
 						isAdmin: user.role,
+						bio: user.bio,
+						status: user.status,
+						joined: user.joined,
 						_id: user._id,
 						request: {
 							type: "GET",
@@ -52,7 +61,7 @@ exports.getUser = function(req, res, next)
 	const id = req.params.userId;
 
 	User.findById(id)
-		.select("username email role isAdmin _id")
+		.select("username email role isAdmin avatar bio status firstName lastName level xp rep joined _id")
 		.exec()
 		.then(user => {
 			console.log(user);
@@ -129,7 +138,11 @@ exports.registerUser = function(req, res, next)
 							_id: new mongoose.Types.ObjectId(),
 							email: req.body.email,
 							username: req.body.username,
-							password: hash
+							password: hash,
+							level: 1,
+							xp: 0,
+							rep: 0
+							
 						});
 
 						// Add the user to the database.

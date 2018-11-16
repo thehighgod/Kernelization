@@ -1,0 +1,105 @@
+// pages/_profile.scss - User Profile page.
+// Copywrite (C) 2018, Brett Broadhurst
+//
+
+.k__profile {
+	height: 900px;
+	width: 75%;
+	margin: auto;
+	background-color: $white1;
+	padding: 1em;
+	
+	.profile-header {
+		display: block;
+		position: relative;
+
+		.profile-name {
+			display: block;
+			position: relative;
+			width: 100%;
+			text-align: center;
+			color: $black1;
+		}
+		
+		.profile-image {
+			display: block;
+			position: relative;
+			margin: 1em auto;
+			height: 100px;
+			width: 100px;
+			background-color: black;
+		}
+
+		.profile-status {
+			position: relative;
+			display: block;
+			text-align: center;
+			
+		}
+
+		.profile-stats {
+			margin: 0 0 1em 0;
+			
+			p {
+				color: $black1;
+				span {
+					color: $black1;
+				}
+			}
+
+			.p-stats-level {
+				
+			}
+
+			.p-stats-xp {
+
+			}
+
+			.p-stats-rep {
+
+			}
+		}
+	}
+
+	.profile-body {
+		background-color: #CCCCCC;
+		
+		p {
+			color: $black1;
+		}
+
+		.profile-bio {
+			max-height: 300px;
+			padding: 10px;
+			overflow-y: scroll;
+			
+			p {
+				word-wrap: break-word;
+			}
+		}
+	}
+}
+
+.pie {
+	@include size(100%, 100%);
+	position: absolute;
+	clip: rect(0, $default-size, $default-size, $default-size / 2);
+	top: 0;
+	left: 0;
+	
+	.half-circle {
+		@include size(100%, 100%);
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: ($default-size / 10) solid $white1;
+		border-radius: 50%;
+		clip: rect(0, $default-size / 2, $default-size, 0);
+	}
+
+	.label {
+		.small {
+
+		}
+	}
+}
